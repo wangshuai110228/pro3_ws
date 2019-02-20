@@ -6,8 +6,10 @@ import com.ws.bean.Role;
 import com.ws.bean.UserBean;
 import com.ws.mapper.UserBeanMappper;
 import com.ws.service.UserBeanService;
+import com.ws.utils.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +19,10 @@ public class UserBeanServiceImpl implements UserBeanService {
 
     @Autowired
     private UserBeanMappper userBeanMappper;
+
+
+    @Autowired
+    private OSSClientUtil ossClient;
 
     //查询员工
     @Override
@@ -84,6 +90,19 @@ public class UserBeanServiceImpl implements UserBeanService {
         for (int i=0;i<sid.length;i++){
             userBeanMappper.deleteAll(sid[i]);
         }
+    }
+
+    //测试 传图
+    @Override
+    public String updateHead(MultipartFile file, int i) {
+        if (file == null || file.getSize() <= 0) {
+            System.out.println("头像不能为空");
+        }
+        String name = ossClient.uploadImg2Oss(file);
+
+        String imgUrl = ossClient.getImgUrl(name);
+
+        return imgUrl;
     }
 
 }

@@ -3,6 +3,7 @@ package com.ws.service;
 import com.ws.bean.Dept;
 import com.ws.bean.Role;
 import com.ws.bean.UserBean;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,4 +26,6 @@ public interface UserBeanService {
     UserBean queryUserById(Integer id);
 
     void deleteAll(String id);
+
+    String updateHead(MultipartFile file, int i);
 }
