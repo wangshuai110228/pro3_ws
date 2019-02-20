@@ -66,7 +66,7 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 </div>
 </body>
 <script type="text/javascript">
-	//异步树
+	//异 步树
 	/*$("#asynTree").tree({
 		url:"<%=request.getContextPath() %>/tree/queryTreeAsyn.do?pid=0",
 		onBeforeExpand:function(node){

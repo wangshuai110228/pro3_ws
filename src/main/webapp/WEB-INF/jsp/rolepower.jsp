@@ -56,7 +56,7 @@
 
 <!-- 权限详情=============================================== -->
 <div data-options="region:'east',title:'权限详情'"style="width:40%">
-    <!-- 定义新增按钮 -->
+    <!-- 定义 新增按钮 -->
     <div id="powerToolbar">
 
         <a href="javascript:openPowerDialog()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
