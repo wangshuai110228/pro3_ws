@@ -18,14 +18,42 @@ public class TreeController {
     @Autowired
      private TreeService treeService;
 
+    //用户树
     @RequestMapping("authTree")
     @ResponseBody
-    public List<Tree> queryTree(HttpSession session){
+    public List<Tree> queryTree(HttpSession session,Tree tree){
         UserBean user = (UserBean) session.getAttribute("user");
         Integer uid = user.getId();
-        return treeService.queryTree(uid);
+        return treeService.queryTree(uid,tree);
     }
 
+    //课程树
+    @RequestMapping("queryTree2")
+    @ResponseBody
+    public List<Tree> queryTree2(HttpSession session,Tree tree){
+        UserBean user = (UserBean) session.getAttribute("user");
+        Integer uid = user.getId();
+        return treeService.queryTree2(uid,tree);
+    }
+
+
+    //报表树
+    @RequestMapping("reportTree")
+    @ResponseBody
+    public List<Tree> reportTree(HttpSession session,Tree tree){
+        UserBean user = (UserBean) session.getAttribute("user");
+        Integer uid = user.getId();
+        return treeService.queryTree3(uid,tree);
+    }
+
+    //日志树
+    @RequestMapping("journalTree")
+    @ResponseBody
+    public List<Tree> journalTree(HttpSession session,Tree tree){
+        UserBean user = (UserBean) session.getAttribute("user");
+        Integer uid = user.getId();
+        return treeService.queryTree4(uid,tree);
+    }
 
     //登陆 queryLogin
     //登录

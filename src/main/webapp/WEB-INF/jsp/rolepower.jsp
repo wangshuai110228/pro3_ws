@@ -36,7 +36,7 @@
 <div data-options="region:'center',title:'权限列表'"style="width:40%">
     <div class="easyui-panel" data-options="footer:'#footer',fit:true">
         <!-- 定义隐藏域id -->
-        <input  id="roleId">
+        <input  id="roleId" type="hidden">
         <!-- 定义树 -->
         <ul id="orgTree"></ul>
 

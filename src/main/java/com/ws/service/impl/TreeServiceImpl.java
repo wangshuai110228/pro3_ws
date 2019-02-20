@@ -15,12 +15,29 @@ public class TreeServiceImpl  implements TreeService {
 
     @Autowired
     private TreeMapper treeMapper;
-//查询数
+//查询树
     @Override
-    public List<Tree> queryTree(Integer uid) {
-        return treeMapper.queryTree(uid);
+    public List<Tree> queryTree(Integer uid,Tree tree) {
+        return treeMapper.queryTree(uid,tree);
     }
-//登陆
+
+    @Override
+    public List<Tree> queryTree2(Integer uid,Tree tree) {
+        return treeMapper.queryTree2(uid,tree);
+    }
+
+    @Override
+    public List<Tree> queryTree3(Integer uid,Tree tree) {
+        return treeMapper.queryTree3(uid,tree);
+    }
+
+    @Override
+    public List<Tree> queryTree4(Integer uid,Tree tree) {
+        return treeMapper.queryTree4(uid,tree);
+    }
+
+
+    //登陆
     @Override
     public UserBean queryUserByLoginNumber(String username) {
         return treeMapper.queryUserByLoginNumber(username);

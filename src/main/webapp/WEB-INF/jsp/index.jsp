@@ -32,12 +32,20 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 >
 <div class="easyui-accordion" data-options="fit:true,selected:0">
 
-<div data-options="title:'系统管理'">
-<ul id="orgTree"></ul>
-</div>
-<div data-options="title:'用户管理'">
-<ul id="asynTree"></ul>
-</div>
+	<div data-options="title:'用户管理'">
+	<ul id="orgTree"></ul>
+	</div>
+	<div data-options="title:'课程管理'">
+	<ul id="asynTree"></ul>
+	</div>
+	<div data-options="title:'报表管理'">
+		<ul id="asynTree2"></ul>
+	</div>
+	<div data-options="title:'日志管理'">
+		<ul id="asynTree3"></ul>
+	</div>
+
+
 </div>
 
 </div>
@@ -59,7 +67,7 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 </body>
 <script type="text/javascript">
 	//异步树
-	$("#asynTree").tree({
+	/*$("#asynTree").tree({
 		url:"<%=request.getContextPath() %>/tree/queryTreeAsyn.do?pid=0",
 		onBeforeExpand:function(node){
 			$("#asynTree").tree("options").url="<%=request.getContextPath() %>/tree/queryTreeAsyn.do?pid="+node.id;
@@ -85,14 +93,14 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 			}
 		}
 		
-	})
+	})*/
 		function createJsp(url){
 		  return "<iframe frameborder='0' src='<%=request.getContextPath() %>"+url+"' style='width:100%;height:100%' scrolling='auto'></iframe>";  
 		
 			
 		}
 	
-	//加载同步树：工具js
+	//加载同步树：工具js    员工
 	$("#orgTree").tree({
 		url:"<%=request.getContextPath() %>/authTree",
 		parentField:"pid",
@@ -107,8 +115,22 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 					$("#myTabs").tabs("add",{
 						title:node.text,
 						closable:true,
-						content:createJsp(node.url)
-						
+						content:createJsp(node.url),
+
+						//更新页面
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler:function(){
+								// 更新选项卡
+								var tab = $('#myTabs').tabs('getSelected');
+								$("#myTabs").tabs('update',{
+									tab: tab,
+									options:{
+										content: createJsp(node.url)
+									}
+								});
+							}
+						}]
 						
 					})
 				}
@@ -116,6 +138,127 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 			}
 		}
 		
+	})
+
+	//加载同步树：工具js    课程
+	$("#asynTree").tree({
+		url:"<%=request.getContextPath() %>/queryTree2",
+		parentField:"pid",
+		onClick:function(node){
+			//alert(node.url)
+			if(node.url!=null){
+				if($("#myTabs").tabs("exists",node.text)){
+
+					$("#myTabs").tabs("select",node.text);
+				}else{
+
+					$("#myTabs").tabs("add",{
+						title:node.text,
+						closable:true,
+						content:createJsp(node.url),
+
+						//更新页面
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler:function(){
+								// 更新选项卡
+								var tab = $('#myTabs').tabs('getSelected');
+								$("#myTabs").tabs('update',{
+									tab: tab,
+									options:{
+										content: createJsp(node.url)
+									}
+								});
+							}
+						}]
+
+					})
+				}
+
+			}
+		}
+
+	})
+
+
+	//加载同步树：工具js    报表
+	$("#asynTree2").tree({
+		url:"<%=request.getContextPath() %>/reportTree",
+		parentField:"pid",
+		onClick:function(node){
+			//alert(node.url)
+			if(node.url!=null){
+				if($("#myTabs").tabs("exists",node.text)){
+
+					$("#myTabs").tabs("select",node.text);
+				}else{
+
+					$("#myTabs").tabs("add",{
+						title:node.text,
+						closable:true,
+						content:createJsp(node.url),
+
+						//更新页面
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler:function(){
+								// 更新选项卡
+								var tab = $('#myTabs').tabs('getSelected');
+								$("#myTabs").tabs('update',{
+									tab: tab,
+									options:{
+										content: createJsp(node.url)
+									}
+								});
+							}
+						}]
+
+					})
+				}
+
+			}
+		}
+
+	})
+
+	//加载同步树：工具js    日志
+	$("#asynTree3").tree({
+		url:"<%=request.getContextPath() %>/journalTree",
+		parentField:"pid",
+		onClick:function(node){
+			//alert(node.url)
+			if(node.url!=null){
+				if($("#myTabs").tabs("exists",node.text)){
+
+					$("#myTabs").tabs("select",node.text);
+				}else{
+
+					$("#myTabs").tabs("add",{
+						title:node.text,
+						closable:true,
+						content:createJsp(node.url),
+
+						//更新页面
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler:function(){
+								// 更新选项卡
+								var tab = $('#myTabs').tabs('getSelected');
+								$("#myTabs").tabs('update',{
+									tab: tab,
+									options:{
+										content: createJsp(node.url)
+									}
+								});
+							}
+						}]
+
+					})
+				}
+
+			}
+		}
+
 	})
 
 

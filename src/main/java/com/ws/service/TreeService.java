@@ -7,7 +7,14 @@ import com.ws.bean.UserBean;
 import java.util.List;
 
 public interface TreeService {
-    List<Tree> queryTree(Integer uid);
+    List<Tree> queryTree(Integer uid,Tree tree);
+
+    List<Tree> queryTree2(Integer uid,Tree tree);
+
+    List<Tree> queryTree3(Integer uid,Tree tree);
+
+    List<Tree> queryTree4(Integer uid,Tree tree);
+
 
     UserBean queryUserByLoginNumber(String username);
 
