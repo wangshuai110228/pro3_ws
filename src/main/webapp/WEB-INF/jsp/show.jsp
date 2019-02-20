@@ -146,6 +146,7 @@ function initDeptid(){
 
 }
 
+
 //查询
 $("#myTable").datagrid({
 	url:"<%=request.getContextPath()%>/queryUserBean",
@@ -266,14 +267,16 @@ function deleteBys(){
 				$("#myForm").form("load",data);
 
 
+                initDeptid();
+
+                initRole();
+
 				//回显：图片
-				$("#head_img").prop("src",data.head_img)
+				$("#mypic").prop("src",data.userimg)
 				// 文本框 回填
 				//$('#hideImg').val(imgurl);
 
-				initDeptid();
 
-				initRole();
 				//弹框
 				$("#myDialog").dialog({
 					title:"修改用户",
@@ -299,7 +302,7 @@ function deleteBys(){
 		//清除图片隐藏域
 		$("#hideImg").val("");
 		//清除图片
-		$("#add_img").prop("src","");
+		$("#mypic").prop("src","");
 		//清空富文本框
 		//editor.html("");
 		initDeptid();

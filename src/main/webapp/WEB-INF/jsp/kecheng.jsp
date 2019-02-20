@@ -112,14 +112,22 @@
 </body>
 <script>
 
+    //条件查询
+    function search(){
+        $("#myTablek").datagrid("load",{
+
+        })
+
+    }
+
     //打开对话框
     function openDig() {
         //重置表单
-        $("#myFormw").form("reset");
+        $("#myForm").form("reset");
         //清除图片隐藏域
         $("#hideImg").val("");
         //清除图片
-        $("#add_img").prop("src", "");
+        $("#mypic").prop("src", "");
         //清空富文本框
         //editor.html("");
 
@@ -312,7 +320,7 @@
 
     //查询
     $("#myTablek").datagrid({
-        url:"<%=request.getContextPath()%>/querykecheneeee",
+        url:"<%=request.getContextPath()%>/querykechen2",
         columns:[[
             {field:'check',checkbox:true},
             {field:'id',title:'编号'},

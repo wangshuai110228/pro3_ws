@@ -107,12 +107,18 @@
         })
     }
 
+    //条件查询
+    function search(){
+        $("#myTable2").datagrid("load",{
 
+        })
+
+    }
 
 
     //查询
     $("#myTable2").datagrid({
-        url:"<%=request.getContextPath()%>/queryProblem2",
+        url:"<%=request.getContextPath()%>/queryProblem",
         columns:[[
             {field:'check',checkbox:true},
             {field:'id',title:'编号'},

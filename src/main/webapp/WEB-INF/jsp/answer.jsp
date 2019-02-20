@@ -181,6 +181,14 @@
         })
     }
 
+    //条件查询
+    function search(){
+        $("#myTable").datagrid("load",{
+
+        })
+
+    }
+
     //查询
     $("#myTable").datagrid({
         url:"<%=request.getContextPath()%>/queryAnswer",

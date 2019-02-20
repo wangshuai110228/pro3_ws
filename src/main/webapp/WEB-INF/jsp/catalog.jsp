@@ -89,7 +89,7 @@
     //打开对话框
     function openDig() {
         //重置表单
-        $("#myFormw").form("reset");
+        $("#myForm").form("reset");
         //清除图片隐藏域
         $("#hideImg").val("");
         //清除图片
@@ -221,6 +221,14 @@
             })
 
         })
+    }
+
+    //条件查询
+    function search(){
+        $("#myTable").datagrid("load",{
+
+        })
+
     }
 
     //查询
