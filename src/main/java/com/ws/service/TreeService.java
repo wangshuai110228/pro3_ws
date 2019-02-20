@@ -7,6 +7,7 @@ import com.ws.bean.UserBean;
 import java.util.List;
 
 public interface TreeService {
+
     List<Tree> queryTree(Integer uid,Tree tree);
 
     List<Tree> queryTree2(Integer uid,Tree tree);
