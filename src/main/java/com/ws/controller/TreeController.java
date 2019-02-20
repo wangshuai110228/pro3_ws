@@ -28,8 +28,6 @@ public class TreeController {
     }
 
     //课程树
-
-
     @RequestMapping("queryTree2")
     @ResponseBody
     public List<Tree> queryTree2(HttpSession session,Tree tree){
