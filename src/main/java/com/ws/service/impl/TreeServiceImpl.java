@@ -17,6 +17,7 @@ public class TreeServiceImpl  implements TreeService {
     private TreeMapper treeMapper;
 //查询树
 
+
     @Override
     public List<Tree> queryTree(Integer uid,Tree tree) {
         return treeMapper.queryTree(uid,tree);
