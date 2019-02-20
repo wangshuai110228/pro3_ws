@@ -28,6 +28,8 @@ public class TreeController {
     }
 
     //课程树
+
+
     @RequestMapping("queryTree2")
     @ResponseBody
     public List<Tree> queryTree2(HttpSession session,Tree tree){
@@ -35,9 +37,6 @@ public class TreeController {
         Integer uid = user.getId();
         return treeService.queryTree2(uid,tree);
     }
-
-
-
 
     //报表树
     @RequestMapping("reportTree")
