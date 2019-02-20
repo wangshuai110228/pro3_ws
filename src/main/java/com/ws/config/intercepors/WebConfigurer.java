@@ -26,9 +26,10 @@ public class WebConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // addPathPatterns("/**") 表示拦截所有的请求，
         // excludePathPatterns("/login", "/register") 表示除了登陆与注册之外，因为登陆注册不需要登陆也可以访问 authTree
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/register","/uploadImg","/domeOss","/headImgUpload.json");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/register","/uploadImg");
 
-        registry.addInterceptor(powerMenuInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/register", "/index","/uploadImg","/domeOss","/headImgUpload.json");
+        registry.addInterceptor(powerMenuInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/register", "/index","/uploadImg","/addTree");
+
 
     }
 }
