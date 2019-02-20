@@ -10,28 +10,36 @@ import java.util.List;
 public interface KechengMapper {
 
     //查询总条数
-    //@Select("select count(*)  from t_kecheng")
-    @Select("<script>"
-            + "select count(*)  from t_kecheng "
+    @Select("select count(*)  from t_kecheng")
+    /*@Select("<script>"
+            + "SELECT count(*)  from t_kecheng "
             + "WHERE 1=1"
-            + "<if test='kecheng.kname!=null'>"
-            + "and kname like '%${kecheng.kname}%'"
+            + "<if test='kecheng.lteacher!=null'>"
+            + "and lteacher like '%${kecheng.lteacher}%'"
             + "</if>"
-            + "</script>")
+            + "</script>")*/
     long queryTotak(@Param("kecheng") Kecheng kecheng);
 
 
 
     //查询
-   // @Select("SELECT * FROM t_kecheng LIMIT #{start},#{rows}")
-    @Select("<script>"
-            + "select count(*)  from t_kecheng"
+  @Select("SELECT * FROM t_kecheng LIMIT #{start},#{rows}")
+   /* @Select("<script>"
+            + "SELECT * from t_kecheng"
             + "WHERE 1=1"
-            + "<if test='kecheng.kname!=null'>"
-            + "and kname like '%${kecheng.kname}%'"
+            + "<if test='kecheng.lteacher!=null'>"
+            + "and lteacher like '%${kecheng.lteacher}%'"
             + "LIMIT #{start},#{rows}"
             + "</if>"
-            + "</script>")
+            + "</script>")*/
+    /*@Select("<script>"
+            + "SELECT * from s_webuser "
+            + "WHERE 1=1"
+            + " <if test='webuser.name!=null'>"
+            + " and name like '%${webuser.name}%'"
+            + " LIMIT #{start},#{rows}"
+            + " </if>"
+            + " </script>")*/
     List<Kecheng> queryPageKecheng(@Param("start")int start, @Param("rows")int rows, @Param("kecheng")Kecheng kecheng);
 
     //删除
