@@ -118,7 +118,7 @@
 
     //查询
     $("#myTable2").datagrid({
-        url:"<%=request.getContextPath()%>/queryProblem",
+        url:"<%=request.getContextPath()%>/queryProblem2",
         columns:[[
             {field:'check',checkbox:true},
             {field:'id',title:'编号'},

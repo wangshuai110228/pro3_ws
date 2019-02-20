@@ -320,7 +320,7 @@
 
     //查询
     $("#myTablek").datagrid({
-        url:"<%=request.getContextPath()%>/querykechen2",
+        url:"<%=request.getContextPath()%>/querykecheneeee",
         columns:[[
             {field:'check',checkbox:true},
             {field:'id',title:'编号'},
