@@ -10,10 +10,26 @@ import java.util.List;
 @Mapper
 public interface CatalogMaper {
     //查询总条数
-    @Select("select count(*)  FROM t_catalog c LEFT JOIN t_kecheng k on  c.kid=k.id")
+    //@Select("select count(*)  FROM t_catalog c LEFT JOIN t_kecheng k on  c.kid=k.id")
+    @Select("<script>"
+            + "select count(*) FROM t_catalog c LEFT JOIN t_kecheng k on  c.kid=k.id "
+            + "WHERE 1=1"
+            + "<if test='catalog.mlname!=null'>"
+            + "and c.mlname like '%${catalog.mlname}%'"
+            + "</if>"
+            + "</script>")
     long queryTota(@Param("catalog") Catalog catalog);
+
     //查询
-    @Select("SELECT * FROM t_catalog c LEFT JOIN t_kecheng k on  c.kid=k.id  LIMIT #{start},#{rows}")
+    //@Select("SELECT * FROM t_catalog c LEFT JOIN t_kecheng k on  c.kid=k.id  LIMIT #{start},#{rows}")
+    @Select("<script>"
+            + "SELECT * FROM t_catalog c LEFT JOIN t_kecheng k on  c.kid=k.id "
+            + "WHERE 1=1"
+            + "<if test='catalog.mlname!=null'>"
+            + "and c.mlname like '%${catalog.mlname}%'"
+            + "LIMIT #{start},#{rows}"
+            + "</if>"
+            + "</script>")
     List<Catalog> queryPageCatalog(@Param("start")int start, @Param("rows")int rows, @Param("catalog")Catalog catalog);
 
 

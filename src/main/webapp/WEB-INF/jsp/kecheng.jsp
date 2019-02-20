@@ -29,6 +29,11 @@
 <body>
 
 <div id="searchDivk">
+<!---->
+    课程名称：<input class="easyui-textbox" id="kname">
+
+    <a href="javascript:search()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
+
 
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
@@ -59,7 +64,7 @@
                 </td>
             </tr>
             <tr>
-                <td>课程名字</td>
+                <td>课程名称</td>
                 <td>
                     <input class="easyui-textbox" name="kname">
                 </td>
@@ -115,7 +120,7 @@
     //条件查询
     function search(){
         $("#myTablek").datagrid("load",{
-
+            kname:$("#kname").textbox("getValue")
         })
 
     }
@@ -235,7 +240,7 @@
         },
         //检测FLASH失败调用
         'onFallback': function () {
-            alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
+            //alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
         },
         //上传到服务器，服务器返回相应信息到data里
         'onUploadSuccess': function (file, data, response) {
@@ -357,7 +362,5 @@
         toolbar:"#searchDivk",
         pagePosition:"top"
     })
-
-
 </script>
 </html>

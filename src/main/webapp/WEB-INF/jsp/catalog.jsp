@@ -31,6 +31,8 @@
 <body>
 
 <div id="searchDiv">
+    课程目录：<input class="easyui-textbox" id="mlname">
+    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
 
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
@@ -224,11 +226,10 @@
     }
 
     //条件查询
-    function search(){
+    function searchUSer(){
         $("#myTable").datagrid("load",{
-
+            mlname:$("#mlname").textbox("getValue")
         })
-
     }
 
     //查询

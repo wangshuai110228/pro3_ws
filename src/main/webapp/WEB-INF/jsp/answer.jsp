@@ -29,7 +29,10 @@
 <body>
 
 <div id="searchDiv">
+    回答内容：<input class="easyui-textbox" id="contont">
 
+
+    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
 
 </div>
@@ -181,14 +184,6 @@
         })
     }
 
-    //条件查询
-    function search(){
-        $("#myTable").datagrid("load",{
-
-        })
-
-    }
-
     //查询
     $("#myTable").datagrid({
         url:"<%=request.getContextPath()%>/queryAnswer",
@@ -214,6 +209,13 @@
         toolbar:"#searchDiv",
         pagePosition:"top"
     })
+
+    //条件查询
+    function searchUSer(){
+        $("#myTable").datagrid("load",{
+            contont:$("#contont").textbox("getValue")
+        })
+    }
 
 </script>
 </html>
