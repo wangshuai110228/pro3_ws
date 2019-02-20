@@ -2,6 +2,7 @@ package com.ws.controller;
 
 import com.ws.bean.Catalog;
 import com.ws.bean.Kecheng;
+import com.ws.bean.LogBean;
 import com.ws.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

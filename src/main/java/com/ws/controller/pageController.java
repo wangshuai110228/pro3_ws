@@ -6,6 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class pageController {
 
+    @RequestMapping("log")
+    public  String  log(){
+
+        return "Log";
+    }
+
+
     @RequestMapping("index")
     public  String  main(){
 
