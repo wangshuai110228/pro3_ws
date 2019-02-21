@@ -1,0 +1,39 @@
+package com.ws.mapper;
+
+
+import com.ws.bean.Xinwen;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+
+@Mapper
+public interface XinwenMapper {
+    // 查询总条数
+    @Select("select count(*) from t_xinwen")
+    /*@Select("<script>"
+            + "select count(*) from t_xinwen "
+            + "WHERE 1=1"
+            + "<if test='answer.contont!=null'>"
+            + "and a.contont like '%${answer.contont}%'"
+            + "</if>"
+            + "</script>")*/
+    long queryTotal(@Param("xinwen")Xinwen xinwen);
+
+
+    //查询
+    @Select("SELECT * FROM t_xinwen  LIMIT #{start},#{rows}")
+    List<Xinwen> queryPageProblem(@Param("start")int start, @Param("rows")int rows, @Param("xinwen")Xinwen xinwen);
+
+    // 修改
+    @Update("UPDATE t_xinwen SET content=#{content} ,createTime=#{createTime},createUser=#{createUser} where id=#{id}")
+    void updateXinwen(Xinwen xinwen);
+    //新增
+    @Insert("INSERT into t_xinwen(content,createTime,createUser) VALUES(#{content},#{createTime},#{createUser})")
+    void addXinwen(Xinwen xinwen);
+//回显
+@Select("SELECT * FROM t_xinwen x where x.id=#{id}")
+    Xinwen queryXinwenById(Integer id);
+//删除
+@Delete("delete from t_xinwen where id=#{s}")
+    void deleteAll(String s);
+}

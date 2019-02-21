@@ -44,6 +44,11 @@ public class TreeServiceImpl  implements TreeService {
         return treeMapper.queryTree5(uid,tree);
     }
 
+    @Override
+    public List<Tree> queryTree6(Integer uid,Tree tree) {
+        return treeMapper.queryTree6(uid,tree);
+    }
+
 
     //登陆
     @Override
