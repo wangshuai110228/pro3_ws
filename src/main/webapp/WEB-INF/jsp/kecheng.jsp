@@ -163,6 +163,8 @@
 
                 //数据回显
                 $("#myForm").form("load",data);
+                //回显：图片
+                $("#mypic").prop("src",data.kurl)
 
 
                 //弹框

@@ -265,8 +265,8 @@
                         return "不是";
                     }
                 }},
-            {field:'expiredate',title:'会员注册时间'},
-            {field:'expdate',title:'到期时间'},
+            {field:'expiredate',title:'注册时间'},
+
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                     var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
                     str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"

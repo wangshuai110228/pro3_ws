@@ -253,8 +253,10 @@
             {field:'check',checkbox:true},
             {field:'id',title:'编号'},
             {field:'url',title:'封面',formatter:function(value,row,index){
-                    return "<img width='50px' height='50px' src='"+value+"'>";
+                    return "<a href='"+row.href+"'><img width='50px' height='50px' src='"+value+"'></a>";
                 }},
+
+
             {field:'href',title:'网站地址'},
             {field:'content',title:'广告描述'},
 

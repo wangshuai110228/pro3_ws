@@ -11,6 +11,14 @@ public interface WebUserMapper {
     //查询总条数
     @Select("select count(*)  from s_webuser")
     long queryTota(@Param("webuser") WebUser webuser);
+
+
+    //查询总条数    修改会员信息
+    @Update("update s_webuser s set s.member=0 where  to_days(now()) - to_days(s.expiredate)>730")
+    long queryTota2(@Param("webuser") WebUser webuser);
+
+
+
     //查询
     @Select("SELECT * FROM s_webuser LIMIT #{start},#{rows}")
     List<WebUser> queryPageWebUser(@Param("start") int start, @Param("rows") int rows, @Param("webuser") WebUser webuser);

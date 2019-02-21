@@ -17,7 +17,6 @@ public class WebUser {
     private   String  expiredate;
 
 
-    private   String   expdate;
 
 
 
@@ -76,14 +75,6 @@ public class WebUser {
 
     public void setExpiredate(String expiredate) {
         this.expiredate = expiredate;
-    }
-
-    public String getExpdate() {
-        return expdate;
-    }
-
-    public void setExpdate(String expdate) {
-        this.expdate = expdate;
     }
 
 

@@ -125,6 +125,15 @@
             }
         })
     }
+
+    //条件查询
+    function search(){
+        $("#myTablek").datagrid("load",{
+
+        })
+
+    }
+
     //单个删除
     function deleteByid(id){
         //alert(id)
