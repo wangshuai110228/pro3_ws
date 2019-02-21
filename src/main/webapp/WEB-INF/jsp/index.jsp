@@ -267,6 +267,7 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 
 
 	//加载同步树：工具js    广告
+
 	$("#asynTree4").tree({
 		url:"<%=request.getContextPath() %>/advTree",
 		parentField:"pid",

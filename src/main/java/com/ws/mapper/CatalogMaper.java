@@ -30,7 +30,7 @@ public interface CatalogMaper {
             + "LIMIT #{start},#{rows}"
             + "</if>"
             + "</script>")
-    List<Catalog> queryPageCatalog(@Param("start")int start, @Param("rows")int rows, @Param("catalog")Catalog catalog);
+    List<Catalog> queryPageCatalog(@Param("start") int start, @Param("rows") int rows, @Param("catalog") Catalog catalog);
 
 
     //查询角色

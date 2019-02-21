@@ -3,6 +3,7 @@ package com.ws.bean;
 public class Advertisement {
 
 
+
     private Integer id;
     private String url;
     private String href;

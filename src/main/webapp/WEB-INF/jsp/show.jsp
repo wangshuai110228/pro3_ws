@@ -26,9 +26,11 @@
 <!-- 条件查询+按钮 -->
 <div id="searchDiv">
 
+<%--
 姓名：<input class="easyui-textbox" id="user_name">
 
 <a href="javascript:search()" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a><br>
+--%>
 
 <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
 <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>

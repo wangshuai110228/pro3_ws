@@ -16,7 +16,7 @@ import java.util.List;
 public class TreeController {
 
     @Autowired
-     private TreeService treeService;
+    private TreeService treeService;
 
     //用户树
     @RequestMapping("authTree")
@@ -108,7 +108,7 @@ public class TreeController {
         return treeService.querypowerMenu(powerId);
     }
 
-//新增
+    //新增
     @ResponseBody
     @RequestMapping("savePowerMenu")
     public  String savePowerMenu(PowerMenu powerMenu){

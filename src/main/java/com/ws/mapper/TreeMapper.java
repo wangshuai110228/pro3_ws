@@ -36,8 +36,6 @@ public interface TreeMapper {
 
 
 
-
-
     @Select("select * from user where username=#{username} ")
     UserBean queryUserByLoginNumber(String username);
 

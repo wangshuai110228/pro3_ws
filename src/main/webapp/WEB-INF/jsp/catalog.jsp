@@ -10,6 +10,7 @@
 <head>
     <title>Title</title>
     <head>
+
         <title>Title</title>
         <!-- 引入easyui样式文件 -->
         <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/jquery-easyui-1.5/themes/default/easyui.css">

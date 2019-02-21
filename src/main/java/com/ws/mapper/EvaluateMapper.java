@@ -11,10 +11,10 @@ public interface EvaluateMapper {
 
 //查询总条数
     @Select("select count(*)  from t_pinlun a ")
-    long queryTotal(@Param("evaluate")  Evaluate evaluate);
+    long queryTotal(@Param("evaluate") Evaluate evaluate);
     //查询
     @Select("SELECT * FROM t_pinlun where status=1 LIMIT #{start},#{rows}")
-    List<Evaluate> queryPage(@Param("start")int start, @Param("rows")int rows, @Param("evaluate") Evaluate evaluate);
+    List<Evaluate> queryPage(@Param("start") int start, @Param("rows") int rows, @Param("evaluate") Evaluate evaluate);
 
     //批量删除
     @Update("UPDATE t_pinlun  p SET p.status=0 WHERE id=#{s} ")

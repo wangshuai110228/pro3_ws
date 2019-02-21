@@ -13,7 +13,7 @@ public interface AdvMapper {
 
     //查询总条数
 
-    @Select("select count(*)  from t_advertisement where expdate=")
+    @Select("select count(*)  from t_advertisement")
     long queryTota(@Param("adv") Advertisement adv);
 
     //查询

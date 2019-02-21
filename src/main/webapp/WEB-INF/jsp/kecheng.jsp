@@ -29,11 +29,12 @@
 <body>
 
 <div id="searchDivk">
-<!--
-    教师名字：<input class="easyui-textbox" id="lteacher">
+<!---->
+    课程名称：<input class="easyui-textbox" id="kname">
 
     <a href="javascript:search()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
--->
+
+
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
 
@@ -119,9 +120,11 @@
     //条件查询
     function search(){
         $("#myTablek").datagrid("load",{
-            lteacher:$("#lteacher").textbox("getValue")
+            kname:$("#kname").textbox("getValue")
         })
+
     }
+
     //打开对话框
     function openDig() {
         //重置表单
@@ -132,6 +135,8 @@
         $("#mypic").prop("src", "");
         //清空富文本框
         //editor.html("");
+
+
         //打开
         $("#myDialog").dialog({
             title:'新增用户',
@@ -235,7 +240,7 @@
         },
         //检测FLASH失败调用
         'onFallback': function () {
-            alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
+            //alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
         },
         //上传到服务器，服务器返回相应信息到data里
         'onUploadSuccess': function (file, data, response) {

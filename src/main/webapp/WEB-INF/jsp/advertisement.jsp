@@ -118,6 +118,7 @@
         })
 
     }
+
     //关闭对话框
     function closeDig(){
         $("#myDialog").dialog("close")

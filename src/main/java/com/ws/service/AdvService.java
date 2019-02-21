@@ -9,6 +9,7 @@ import java.util.HashMap;
 public interface AdvService {
 
 
+
     HashMap<String, Object> queryAdv(int page, int rows, Advertisement adv);
 
     void deleteAll(String id);
