@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface TreeMapper {
-//cssss
+//csssssssssss
     @Select("SELECT t.id,t.text,t.url,t.pid FROM t_tree t LEFT JOIN t_role_power rp on t.id = rp.power_id \n" +
             "LEFT JOIN  t_role r on rp.role_id = r.id LEFT JOIN user u on r.id=u.roleid WHERE u.id=#{uid} and t.text like '%用户%'")
     List<Tree> queryTree(@Param("uid") Integer uid,Tree tree);
