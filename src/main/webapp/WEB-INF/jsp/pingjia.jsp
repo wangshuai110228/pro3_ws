@@ -88,6 +88,11 @@
 
     }
 
+    //关闭对话框
+    function closeDig(){
+        $("#myDialog").dialog("close")
+
+    }
 
     //修改：回显
     function openUpdateBy(id){
@@ -178,6 +183,7 @@
     //条件查询
     function search(){
         $("#myTable").datagrid("load",{
+
 
         })
 

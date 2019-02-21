@@ -91,13 +91,19 @@
                 //关闭
                 closeDig()
                 //刷新
-                searchUSer()
+                searchAnswer()
             }
 
         })
 
     }
 
+
+    //关闭对话框
+    function closeDig(){
+        $("#myDialog").dialog("close")
+
+    }
 
     //修改：回显
     function openUpdateBy(id){
@@ -130,7 +136,7 @@
                     data:{"id":id},
                     success:function(){
                         $.messager.alert("提示消息","删除成功","info");
-                        searchUSer();
+                        searchAnswer()
                     },error:function(){
                         $.messager.alert("提示消息","删除失败","error");
 
@@ -174,7 +180,7 @@
                 data:{"id":ids},
                 success:function(){
                     $.messager.alert("提示消息","删除成功","info");
-                    searchUSer();
+                    searchAnswer()
                 },error:function(){
                     $.messager.alert("提示消息","删除失败","error");
 
@@ -212,7 +218,7 @@
     })
 
     //条件查询
-    function searchUSer(){
+    function searchAnswer(){
         $("#myTable").datagrid("load",{
             contont:$("#contont").textbox("getValue")
         })

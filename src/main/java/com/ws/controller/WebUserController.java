@@ -24,6 +24,7 @@ public class WebUserController {
     @RequestMapping("queryWebUser")
     @ResponseBody
     public HashMap<String,Object> queryCatalog(int page, int rows, WebUser webuser){
+
         HashMap<String,Object> list = webUserService.queryWebUser(page,rows, webuser);
 
         return list;

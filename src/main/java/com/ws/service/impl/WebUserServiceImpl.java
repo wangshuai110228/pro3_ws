@@ -21,6 +21,7 @@ public class WebUserServiceImpl implements WebUserService {
         HashMap<String, Object>  hashMap = new  HashMap<>();
         //查询总条数
         long  total =webUserMapper.queryTota(webuser);
+        long  total2 =webUserMapper.queryTota2(webuser);
 
         //计算开始位置
         int start =(page-1)*rows;
@@ -28,6 +29,8 @@ public class WebUserServiceImpl implements WebUserService {
         int  end = start +rows;
         List<WebUser> list  = webUserMapper.queryPageWebUser(start,rows, webuser);
         hashMap.put("total",total);
+        hashMap.put("total",total2);
+
         hashMap.put("rows",list);
 
 

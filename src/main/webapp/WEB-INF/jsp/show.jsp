@@ -220,7 +220,7 @@ function deleteBys(){
 			data:{"id":ids},
 			success:function(){
 				$.messager.alert("提示消息","删除成功","info");
-				search();
+                search();
 			},error:function(){
 				$.messager.alert("提示消息","删除失败","error");
 
@@ -243,7 +243,7 @@ function deleteBys(){
 					data:{"id":id},
 					success:function(){
 						$.messager.alert("提示消息","删除成功","info");
-						search();
+                        search();
 					},error:function(){
 						$.messager.alert("提示消息","删除失败","error");
 
@@ -291,7 +291,7 @@ function deleteBys(){
 	//条件查询
 	function search(){
 		$("#myTable").datagrid("load",{
-		user_name:$("#user_name").textbox("getValue"),
+
 
 		})
 		
@@ -335,7 +335,7 @@ function deleteBys(){
 				//关闭
 				closeDig()
 				//刷新
-				search()
+                search()
 			}
 			
 		})
