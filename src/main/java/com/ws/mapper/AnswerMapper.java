@@ -46,7 +46,7 @@ public interface AnswerMapper {
             + "LIMIT #{start},#{rows}"
             + "</if>"
             + "</script>")
-    List<Answer> queryPageProblem(@Param("start")int start, @Param("rows")int rows, @Param("answer")Answer answer);
+    List<Answer> queryPageProblem(@Param("start") int start, @Param("rows") int rows, @Param("answer") Answer answer);
 
     //删除
     @Delete("delete  FROM t_answer  where id=#{s} ")

@@ -20,7 +20,7 @@ public interface ProblemMapper {
 
     //查询
     @Select("SELECT * FROM t_problem LIMIT #{start},#{rows}")
-    List<ProblemBean> queryPageProblem(@Param("start")int start, @Param("rows")int rows, @Param("problemBean")ProblemBean problemBean);
+    List<ProblemBean> queryPageProblem(@Param("start") int start, @Param("rows") int rows, @Param("problemBean") ProblemBean problemBean);
     //删除
     @Delete("delete from t_problem where id=#{s}")
     void deleteAll(String s);

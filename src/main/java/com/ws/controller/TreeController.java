@@ -16,7 +16,7 @@ import java.util.List;
 public class TreeController {
 
     @Autowired
-     private TreeService treeService;
+    private TreeService treeService;
 
     //用户树
     @RequestMapping("authTree")
@@ -28,6 +28,8 @@ public class TreeController {
     }
 
     //课程树
+
+
     @RequestMapping("queryTree2")
     @ResponseBody
     public List<Tree> queryTree2(HttpSession session,Tree tree){
@@ -35,8 +37,6 @@ public class TreeController {
         Integer uid = user.getId();
         return treeService.queryTree2(uid,tree);
     }
-
-
 
     //报表树
     @RequestMapping("reportTree")
@@ -99,7 +99,7 @@ public class TreeController {
         return treeService.querypowerMenu(powerId);
     }
 
-//新增
+    //新增
     @ResponseBody
     @RequestMapping("savePowerMenu")
     public  String savePowerMenu(PowerMenu powerMenu){

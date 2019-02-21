@@ -17,6 +17,7 @@ public class TreeServiceImpl  implements TreeService {
     private TreeMapper treeMapper;
 //查询树
 
+
     @Override
     public List<Tree> queryTree(Integer uid,Tree tree) {
         return treeMapper.queryTree(uid,tree);
@@ -43,7 +44,7 @@ public class TreeServiceImpl  implements TreeService {
     public UserBean queryUserByLoginNumber(String username) {
         return treeMapper.queryUserByLoginNumber(username);
     }
-//查询中间树
+    //查询中间树
     @Override
     public List<Tree> authTree2(String id) {
 

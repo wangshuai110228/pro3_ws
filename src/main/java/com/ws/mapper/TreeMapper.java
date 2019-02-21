@@ -4,7 +4,7 @@ import com.ws.bean.PowerMenu;
 import com.ws.bean.Tree;
 import com.ws.bean.UserBean;
 import org.apache.ibatis.annotations.*;
-
+//import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
@@ -12,21 +12,22 @@ public interface TreeMapper {
 
     @Select("SELECT t.id,t.text,t.url,t.pid FROM t_tree t LEFT JOIN t_role_power rp on t.id = rp.power_id \n" +
             "LEFT JOIN  t_role r on rp.role_id = r.id LEFT JOIN user u on r.id=u.roleid WHERE u.id=#{uid} and t.text like '%用户%'")
-    List<Tree> queryTree(Integer uid,Tree tree);
+    List<Tree> queryTree(@Param("uid") Integer uid,Tree tree);
 
 
     @Select("SELECT t.id,t.text,t.url,t.pid FROM t_tree t LEFT JOIN t_role_power rp on t.id = rp.power_id \n" +
             "LEFT JOIN  t_role r on rp.role_id = r.id LEFT JOIN user u on r.id=u.roleid WHERE u.id=#{uid} and t.text like '%课程%'")
-    List<Tree> queryTree2(Integer uid,Tree tree);
+    List<Tree> queryTree2(@Param("uid")Integer uid,Tree tree);
 
     @Select("SELECT t.id,t.text,t.url,t.pid FROM t_tree t LEFT JOIN t_role_power rp on t.id = rp.power_id \n" +
             "LEFT JOIN  t_role r on rp.role_id = r.id LEFT JOIN user u on r.id=u.roleid WHERE u.id=#{uid} and t.text like '%报表%'")
-    List<Tree> queryTree3(Integer uid,Tree tree);
+    List<Tree> queryTree3(@Param("uid")Integer uid,Tree tree);
 
 
     @Select("SELECT t.id,t.text,t.url,t.pid FROM t_tree t LEFT JOIN t_role_power rp on t.id = rp.power_id \n" +
             "LEFT JOIN  t_role r on rp.role_id = r.id LEFT JOIN user u on r.id=u.roleid WHERE u.id=#{uid} and t.text like '%日志%'")
-    List<Tree> queryTree4(Integer uid,Tree tree);
+    List<Tree> queryTree4(@Param("uid")Integer uid,Tree tree);
+
 
 
 
