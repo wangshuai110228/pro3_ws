@@ -29,8 +29,8 @@
 <body>
 <div id="searchDiv">
 
-   <%--网站用户名称：<input class="easyui-textbox" id="name">
-    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>--%>
+   网站用户名称：<input class="easyui-textbox" id="name">
+    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
 
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
