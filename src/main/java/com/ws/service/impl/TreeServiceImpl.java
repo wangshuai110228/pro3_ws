@@ -49,6 +49,14 @@ public class TreeServiceImpl  implements TreeService {
         return treeMapper.queryTree6(uid,tree);
     }
 
+    @Override
+    public List<Tree> queryTree7(Integer uid, Tree tree) {
+        return treeMapper.queryTree7(uid,tree);
+    }
+
+
+
+
 
     //登陆
     @Override
@@ -107,6 +115,8 @@ public class TreeServiceImpl  implements TreeService {
             treeMapper.deleteAll(sid[i]);
         }
     }
+
+
 
 
 }

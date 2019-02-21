@@ -24,6 +24,8 @@ public interface TreeService {
     List<Tree> queryTree6(Integer uid,Tree tree);
 
 
+    List<Tree> queryTree7(Integer uid, Tree tree);
+
     UserBean queryUserByLoginNumber(String username);
 
 
@@ -36,4 +38,6 @@ public interface TreeService {
     String savePowerMenu(PowerMenu powerMenu);
 
     void deleteAll(String id);
+
+
 }

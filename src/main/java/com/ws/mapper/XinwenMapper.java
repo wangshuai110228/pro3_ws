@@ -25,10 +25,10 @@ public interface XinwenMapper {
     List<Xinwen> queryPageProblem(@Param("start")int start, @Param("rows")int rows, @Param("xinwen")Xinwen xinwen);
 
     // 修改
-    @Update("UPDATE t_xinwen SET content=#{content} ,createTime=#{createTime},createUser=#{createUser} where id=#{id}")
+    @Update("UPDATE t_xinwen SET content=#{content} ,createTime=#{createTime},createUser=#{createUser},url=#{url} where id=#{id}")
     void updateXinwen(Xinwen xinwen);
     //新增
-    @Insert("INSERT into t_xinwen(content,createTime,createUser) VALUES(#{content},#{createTime},#{createUser})")
+    @Insert("INSERT into t_xinwen(content,createTime,createUser,url) VALUES(#{content},#{createTime},#{createUser},#{url})")
     void addXinwen(Xinwen xinwen);
 //回显
 @Select("SELECT * FROM t_xinwen x where x.id=#{id}")

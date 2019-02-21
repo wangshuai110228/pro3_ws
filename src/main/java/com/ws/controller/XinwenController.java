@@ -1,11 +1,16 @@
 package com.ws.controller;
 import com.ws.bean.Xinwen;
 import com.ws.service.XinwenService;
+import com.ws.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.HashMap;
 
 @Controller
@@ -56,6 +61,24 @@ public class XinwenController {
     @ResponseBody
     public  void  deleteAll(String id){
         xinwenService.deleteAll(id);
+    }
+
+    //上传图片
+    @RequestMapping("uploadImg1")
+    @ResponseBody
+    public String upload(HttpServletRequest request, @RequestParam(value="picFile",required=false) MultipartFile picFile) {
+        String path = null;
+        try {
+            path = FileUtil.FileUpload(picFile, request);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(path.contains("null")) {
+            return null;
+        }else {
+            System.out.println(path);
+            return path;
+        }
     }
 
 

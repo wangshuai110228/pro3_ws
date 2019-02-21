@@ -37,6 +37,12 @@ public interface TreeMapper {
             "LEFT JOIN  t_role r on rp.role_id = r.id LEFT JOIN user u on r.id=u.roleid WHERE u.id=#{uid} and t.text like '%新闻%'")
     List<Tree> queryTree6(@Param("uid")Integer uid,Tree tree);
 
+    @Select("SELECT t.id,t.text,t.url,t.pid FROM t_tree t LEFT JOIN t_role_power rp on t.id = rp.power_id \n" +
+            "LEFT JOIN  t_role r on rp.role_id = r.id LEFT JOIN user u on r.id=u.roleid WHERE u.id=#{uid} and t.text like '%会员%'")
+    List<Tree> queryTree7(@Param("uid")Integer uid, Tree tree);
+
+
+
 
 
     @Select("select * from user where username=#{username} ")
@@ -66,4 +72,6 @@ public interface TreeMapper {
     //删除
     @Delete("delete  FROM t_prower_menu  where id=#{s} ")
     void deleteAll(String s);
+
+
 }

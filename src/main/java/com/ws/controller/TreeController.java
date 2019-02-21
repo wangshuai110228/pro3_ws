@@ -74,6 +74,15 @@ public class TreeController {
         return treeService.queryTree6(uid,tree);
     }
 
+    //会员树
+    @RequestMapping("vipTree")
+    @ResponseBody
+    public List<Tree> vipTree(HttpSession session,Tree tree){
+        UserBean user = (UserBean) session.getAttribute("user");
+        Integer uid = user.getId();
+        return treeService.queryTree7(uid,tree);
+    }
+
     //登陆 queryLogin
     //登录
     @RequestMapping("login")

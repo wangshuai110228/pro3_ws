@@ -5,6 +5,15 @@ public class Xinwen {
     private  String content;
     private  String createTime;
     private  String createUser;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public Integer getId() {
         return id;

@@ -42,36 +42,22 @@
         <input style="display:none" name="id">
         <table>
             <tr>
-                <td>新闻图片</td>
+                <td>会员名称</td>
                 <td>
-                    <!-- 显示图片 -->
-                    <img width="100px" height="100px"  id="mypic">
-                    <!-- 文件域 上传图片 -->
-                    <div id="eimg"></div>
-                    <!-- 隐藏域 上传图片的路径 -->
-                    <input type="hidden" name="url"  id="create_user">
-
-                    <%--显示进度条--%>
-                    <div id="uploadfileQueue"></div>
+                    <select class="easyui-combobox" name="vname">
+                       <%-- <option value="">全部</option>--%>
+                        <option value="1">普通会员</option>
+                        <option value="2">vip</option>
+                        <option value="3">vvip</option>
+                        <option value="4">vvvip</option>
+                        <option value="5">vvvvip</option>
+                    </select>
                 </td>
             </tr>
             <tr>
-                <td>内容</td>
-
-                <td><%--<textarea id="content" name="content" style="width:400px"></textarea>--%>
-                    <input class="easyui-textbox" name="content">
-                </td>
-            </tr>
-            <tr>
-                <td>创建时间</td>
+                <td>会员价格</td>
                 <td>
-                    <input class="easyui-datebox" name="createTime">
-                </td>
-            </tr>
-            <tr>
-                <td>创建人</td>
-                <td>
-                    <input class="easyui-textbox" name="createUser">
+                    <input class="easyui-textbox" name="vprice">
                 </td>
         </table>
     </form>
@@ -88,9 +74,9 @@
         //重置表单
         $("#myForm").form("reset");
         //清除图片隐藏域
-       $("#hideImg").val("");
+       // $("#hideImg").val("");
         //清除图片
-        $("#mypic").prop("src", "");
+       // $("#mypic").prop("src", "");
         //清空富文本框
         //editor.html("");
 //打开
@@ -107,7 +93,7 @@
     function openUpdateBy(id){
         //alert(id)
         $.ajax({
-            url:"<%=request.getContextPath() %>/queryXinwenById",
+            url:"<%=request.getContextPath() %>/queryVipById",
             type:"post",
             data:{"id":id},
             success:function(data){
@@ -127,7 +113,7 @@
     //新增
     function add(){
         $("#myForm").form("submit",{
-            url:"<%=request.getContextPath() %>/addXinwen",
+            url:"<%=request.getContextPath() %>/addVip",
             success:function(){
                 $.messager.alert("提示","保存成功","info")
                 //关闭弹框
@@ -145,7 +131,7 @@
         $.messager.confirm("提示","是否确定删除!",function(r){
             if(r){
                 $.ajax({
-                    url:"<%=request.getContextPath() %>/deleteXinwenAll",
+                    url:"<%=request.getContextPath() %>/deleteVipAll",
                     type:"post",
                     data:{"id":id},
                     success:function(){
@@ -183,7 +169,7 @@
             }
             //alert(ids)
             $.ajax({
-                url:"<%=request.getContextPath() %>/deleteXinwenAll",
+                url:"<%=request.getContextPath() %>/deleteVipAll",
                 type:"post",
                 data:{"id":ids},
                 success:function(){
@@ -197,16 +183,24 @@
     }
     //查询
     $("#myTablek").datagrid({
-        url:"<%=request.getContextPath()%>/queryXinwen",
+        url:"<%=request.getContextPath()%>/queryVip",
         columns:[[
             {field:'check',checkbox:true},
             {field:'id',title:'编号'},
-            {field:'url',title:'新闻封面',formatter:function(value,row,index){
-                return "<img width='50px' height='50px' src='"+value+"'>";
+            {field:'vname',title:'会员名称',formatter:function(value,row,index){
+                if(value==1){
+                    return "普通会员";
+                }else if(value==2){
+                    return "vip";
+                }else if(value==3){
+                    return "vvip";
+                }else if(value==4){
+                    return "vvvip";
+                }else if(value==5){
+                    return "vvvvip";
+                }
             }},
-            {field:'content',title:'内容'},
-            {field:'createTime',title:'创建时间'},
-            {field:'createUser',title:'创建人'},
+            {field:'vprice',title:'会员价格'},
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                 var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
                 str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"
@@ -223,77 +217,5 @@
         pagePosition:"top"
     })
 
-   /* // 富文本
-    var editor;
-    KindEditor.ready(function(K) {//将编辑器添加到文档中
-        editor = K.create('#content', {
-            cssPath : '<%=request.getContextPath()%>/js/kindeditor-4.1.10/plugins/code/prettify.css',//指定编辑器iframe document的CSS文件，用于设置可视化区域的样式。
-            uploadJson: "<%=request.getContextPath()%>/js/kindeditor-4.1.10/jsp/upload_json.jsp",//指定上传文件的服务器端程序。
-            fileManagerJson: "<%=request.getContextPath()%>/js/kindeditor-4.1.10/jsp/file_manager_json.jsp",//指定浏览远程图片的服务器端程序。
-            allowFileManager : true,//true时显示浏览远程服务器按钮 ;默认值: false
-            //将富文本编辑中的内容同步到表单序列化中
-            afterBlur:function(){this.sync();}
-        });
-    });*/
-
-    ////初始化uploadify
-
-    $("#eimg").uploadify({
-        //开启调试
-        'debug': false,
-        //是否自动上传
-        'auto': true,
-        'multi': false,  //是否多文件上传
-        //'buttonImage':'<%=request.getContextPath()%>/js/uploadify/background.png', //浏览将要上传文件按钮的背景图片路径
-        'buttonText': '选择文件',
-        //flash
-        'swf': "<%=request.getContextPath()%>/js/uploadify/uploadify.swf",
-        'fileObjName': "picFile",
-        'queueSizeLimit': 5,
-        //文件选择后的容器ID
-        'queueID': 'uploadfileQueue',
-        //后台运行上传的程序
-        'uploader': '<%=request.getContextPath()%>/uploadImg1',
-        'width': '100',
-        'height': '24',
-        //是否支持多文件上传，这里为true，你在选择文件的时候，就可以选择多个文件
-        'multi': true,
-        'fileTypeDesc': '支持的格式：',
-        'fileTypeExts': '*.jpg;*.jpge;*.gif;*.png',
-        'fileSizeLimit': '1MB',
-        //上传完成后多久删除进度条
-        'removeTimeout': 1,
-        //返回一个错误，选择文件的时候触发
-        'onSelectError': function (file, errorCode, errorMsg) {
-            switch (errorCode) {
-                case -100:
-                    alert("上传的文件数量已经超出系统限制的" + $('#file_upload').uploadify('settings', 'queueSizeLimit') + "个文件！");
-                    break;
-                case -110:
-                    alert("文件 [" + file.name + "] 大小超出系统限制的" + $('#file_upload').uploadify('settings', 'fileSizeLimit') + "大小！");
-                    break;
-                case -120:
-                    alert("文件 [" + file.name + "] 大小异常！");
-                    break;
-                case -130:
-                    alert("文件 [" + file.name + "] 类型不正确！");
-                    break;
-            }
-        },
-        //检测FLASH失败调用
-        'onFallback': function () {
-            alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
-        },
-        //上传到服务器，服务器返回相应信息到data里
-        'onUploadSuccess': function (file, data, response) {
-            //alert(data);
-            $("#mypic").attr("src", "<%=request.getContextPath()%>/"+data);
-            $("#create_user").val(data);
-        },
-        //多文件上传，服务器返回相应的信息
-        'onQueueComplete': function (queueData) {
-            //alert(queueData.uploadsSuccessful);
-        }
-    });
 </script>
 </html>
