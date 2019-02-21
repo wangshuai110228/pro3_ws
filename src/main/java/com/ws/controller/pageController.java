@@ -88,4 +88,11 @@ public class pageController {
 
         return "ecahers";
     }
+
+
+    @RequestMapping("advertisement")
+    public  String  advertisement(){
+
+        return "advertisement";
+    }
 }

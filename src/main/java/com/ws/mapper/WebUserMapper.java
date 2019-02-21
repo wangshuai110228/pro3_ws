@@ -53,7 +53,7 @@ public interface WebUserMapper {
     @Update("UPDATE s_webuser c SET c.name=#{name} ,c.pwd=#{pwd} ,c.email=#{email}, c.sex=#{sex} where c.id=#{id}")
     void updateWebUser(WebUser webuser);
     //新增
-    @Insert("INSERT INTO s_webuser(name,pwd,email,sex)VALUES(#{name},#{pwd},#{email},#{sex})")
+    @Insert("INSERT INTO s_webuser(name,pwd,email,sex,member,expiredate)VALUES(#{name},#{pwd},#{email},#{sex},#{member},#{expiredate})")
     void addWebUser(WebUser webuser);
     //删除
     @Delete("delete from s_webuser where id=#{s}")

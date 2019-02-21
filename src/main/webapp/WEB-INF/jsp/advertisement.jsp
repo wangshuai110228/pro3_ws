@@ -28,9 +28,9 @@
 </head>
 <body>
 <div id="searchDiv">
-
-   网站用户名称：<input class="easyui-textbox" id="name">
-    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
+<%--
+    广告名称：<input class="easyui-textbox" id="name">
+    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>--%>
 
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
@@ -45,39 +45,38 @@
         <input style="display:none" name="id">
 
         <table>
+
+
             <tr>
-                <td>网站用户账号</td>
+                <td>广告图片</td>
                 <td>
-                    <input class="easyui-textbox" name="name">
-                </td>
-            </tr>
-            <tr>
-                <td>网站用户密码</td>
-                <td>
-                    <input class="easyui-textbox" name="pwd">
-                </td>
-            </tr>
-            <tr>
-                <td>网站用户邮箱</td>
-                <td>
-                    <input class="easyui-textbox" name="email">
+                    <!-- 显示图片 -->
+                    <img width="100px" height="100px"  id="mypic">
+                    <!-- 文件域 上传图片 -->
+                    <div id="eimg"></div>
+                    <!-- 隐藏域 上传图片的路径 -->
+                    <input type="hidden" name="url"  id="create_user">
+
+                    <%--显示进度条--%>
+                    <div id="uploadfileQueue"></div>
                 </td>
             </tr>
 
             <tr>
-                <td>网站用户性别</td>
+                <td>广告地址</td>
                 <td>
-                    <input type="radio" value="1" name="sex">男
-                    <input type="radio" value="0" name="sex">女
+                    <input class="easyui-textbox" name="href">
                 </td>
             </tr>
             <tr>
-                <td>是否注册会员</td>
+                <td>描述</td>
                 <td>
-                    <input type="radio" value="1" name="member">是
-                    <input type="radio" value="0" name="member">否
+                    <input class="easyui-textbox" name="content">
                 </td>
             </tr>
+
+
+
         </table>
 
     </form>
@@ -104,12 +103,13 @@
         $("#myForm").form("reset");
         //清除图片隐藏域
         $("#hideImg").val("");
+
         //清除图片
-        $("#add_img").prop("src", "");
+        $("#mypic").prop("src","");
         //清空富文本框
         //editor.html("");
 
-       // initRole()
+        // initRole()
         //打开
         $("#myDialog").dialog({
             title:'新增用户',
@@ -128,7 +128,7 @@
     //新增//修改
     function add(){
         $("#myForm").form("submit",{
-            url:"<%=request.getContextPath() %>/addWebUser",
+            url:"<%=request.getContextPath() %>/addAdv",
             success:function(){
                 $.messager.alert("提示","保存成功","info")
                 //关闭弹框
@@ -149,7 +149,7 @@
     function openUpdateBy(id){
         //alert(id)
         $.ajax({
-            url:"<%=request.getContextPath() %>/queryWebUserById",
+            url:"<%=request.getContextPath() %>/queryById",
             type:"post",
             data:{"id":id},
             success:function(data){
@@ -157,7 +157,10 @@
 
                 //数据回显
                 $("#myForm").form("load",data);
-               // initRole()
+
+                //回显：图片
+                $("#mypic").prop("src",data.url)
+
 
                 //弹框
                 $("#myDialog").dialog({
@@ -175,7 +178,7 @@
         $.messager.confirm("提示","是否确定删除!",function(r){
             if(r){
                 $.ajax({
-                    url:"<%=request.getContextPath() %>/deleteWebUserAll",
+                    url:"<%=request.getContextPath() %>/deleteAdvAll",
                     type:"post",
                     data:{"id":id},
                     success:function(){
@@ -219,7 +222,7 @@
 
             //alert(ids)
             $.ajax({
-                url:"<%=request.getContextPath() %>/deleteWebUserAll",
+                url:"<%=request.getContextPath() %>/deleteAdvAll",
                 type:"post",
                 data:{"id":ids},
                 success:function(){
@@ -238,35 +241,22 @@
     //条件查询
     function searchUSer(){
         $("#myTable").datagrid("load",{
-            name:$("#name").textbox("getValue")
+
         })
     }
 
     //查询
     $("#myTable").datagrid({
-        url:"<%=request.getContextPath()%>/queryWebUser",
+        url:"<%=request.getContextPath()%>/queryAdvList",
         columns:[[
             {field:'check',checkbox:true},
             {field:'id',title:'编号'},
-            {field:'name',title:'网站用户名称'},
-            {field:'pwd',title:'用户密码'},
-            {field:'email',title:'用户邮箱'},
-            {field:'sex',title:'性别',formatter:function(value,row,index){
-                    if(value==1){
-                        return "男";
-                    }else{
-                        return "女";
-                    }
+            {field:'url',title:'封面',formatter:function(value,row,index){
+                    return "<img width='50px' height='50px' src='"+value+"'>";
                 }},
-            {field:'member',title:'是否是会员',formatter:function(value,row,index){
-                    if(value==1){
-                        return "是";
-                    }else{
-                        return "不是";
-                    }
-                }},
-            {field:'expiredate',title:'会员注册时间'},
-            {field:'expdate',title:'到期时间'},
+            {field:'href',title:'网站地址'},
+            {field:'content',title:'广告描述'},
+
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                     var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
                     str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"
@@ -283,5 +273,65 @@
         pagePosition:"top"
     })
 
+
+    ////初始化uploadify
+
+    $("#eimg").uploadify({
+        //开启调试
+        'debug': false,
+        //是否自动上传
+        'auto': true,
+        'multi': false,  //是否多文件上传
+        //'buttonImage':'<%=request.getContextPath()%>/js/uploadify/background.png', //浏览将要上传文件按钮的背景图片路径
+        'buttonText': '选择文件',
+        //flash
+        'swf': "<%=request.getContextPath()%>/js/uploadify/uploadify.swf",
+        'fileObjName': "picFile",
+        'queueSizeLimit': 5,
+        //文件选择后的容器ID
+        'queueID': 'uploadfileQueue',
+        //后台运行上传的程序
+        'uploader': '<%=request.getContextPath()%>/uploadImg',
+        'width': '100',
+        'height': '24',
+        //是否支持多文件上传，这里为true，你在选择文件的时候，就可以选择多个文件
+        'multi': true,
+        'fileTypeDesc': '支持的格式：',
+        'fileTypeExts': '*.jpg;*.jpge;*.gif;*.png',
+        'fileSizeLimit': '1MB',
+        //上传完成后多久删除进度条
+        'removeTimeout': 1,
+        //返回一个错误，选择文件的时候触发
+        'onSelectError': function (file, errorCode, errorMsg) {
+            switch (errorCode) {
+                case -100:
+                    alert("上传的文件数量已经超出系统限制的" + $('#file_upload').uploadify('settings', 'queueSizeLimit') + "个文件！");
+                    break;
+                case -110:
+                    alert("文件 [" + file.name + "] 大小超出系统限制的" + $('#file_upload').uploadify('settings', 'fileSizeLimit') + "大小！");
+                    break;
+                case -120:
+                    alert("文件 [" + file.name + "] 大小异常！");
+                    break;
+                case -130:
+                    alert("文件 [" + file.name + "] 类型不正确！");
+                    break;
+            }
+        },
+        //检测FLASH失败调用
+        'onFallback': function () {
+            alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
+        },
+        //上传到服务器，服务器返回相应信息到data里
+        'onUploadSuccess': function (file, data, response) {
+            //alert(data);
+            $("#mypic").attr("src", "<%=request.getContextPath()%>/"+data);
+            $("#create_user").val(data);
+        },
+        //多文件上传，服务器返回相应的信息
+        'onQueueComplete': function (queueData) {
+            //alert(queueData.uploadsSuccessful);
+        }
+    });
 </script>
 </html>

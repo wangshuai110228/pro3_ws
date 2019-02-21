@@ -127,7 +127,7 @@
                 //关闭
                 closeDig()
                 //刷新
-                search()
+                searchUSer()
             }
 
         })
@@ -170,7 +170,7 @@
                     data:{"id":id},
                     success:function(){
                         $.messager.alert("提示消息","删除成功","info");
-                        search();
+                        searchUSer();
                     },error:function(){
                         $.messager.alert("提示消息","删除失败","error");
 
@@ -214,7 +214,7 @@
                 data:{"id":ids},
                 success:function(){
                     $.messager.alert("提示消息","删除成功","info");
-                    search();
+                    searchUSer();
                 },error:function(){
                     $.messager.alert("提示消息","删除失败","error");
 

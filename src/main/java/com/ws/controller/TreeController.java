@@ -56,6 +56,15 @@ public class TreeController {
         return treeService.queryTree4(uid,tree);
     }
 
+    //广告树
+    @RequestMapping("advTree")
+    @ResponseBody
+    public List<Tree> advTree(HttpSession session,Tree tree){
+        UserBean user = (UserBean) session.getAttribute("user");
+        Integer uid = user.getId();
+        return treeService.queryTree5(uid,tree);
+    }
+
     //登陆 queryLogin
     //登录
     @RequestMapping("login")

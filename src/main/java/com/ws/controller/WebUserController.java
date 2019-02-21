@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -51,6 +53,11 @@ public class WebUserController {
             webUserService.updateWebUser(webuser);
         }else {
             //新增
+            Date data = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            webuser.setExpiredate(sdf.format(data));
+
             webUserService.addWebUser(webuser);
         }
 
