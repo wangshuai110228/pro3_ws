@@ -89,8 +89,8 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 <!-- 定义选项卡 -->
 <div class="easyui-tabs" data-options="fit:true" id="myTabs">
 
-		<div data-options="title:'首页'">
-			 		欢迎您
+		<div data-options="title:'首页'" style="z-index:999999;background: url(${path}/images/92.jpeg);background-size:100%，100%">
+			 		<h1><center>欢迎您来到展示页面</center></h1>
 		</div>
 		
 </div>
