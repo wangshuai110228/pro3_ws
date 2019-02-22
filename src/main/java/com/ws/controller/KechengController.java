@@ -33,11 +33,30 @@ public class KechengController {
         return list;
     }
 
+
+
+    //查询审核后的
     @RequestMapping("querykecheneeee")
     @ResponseBody
     public List<Kecheng> querykechen3(){
 
         return kechengService.querykechen3();
+    }
+
+    //查询审核前的
+    @RequestMapping("querykechenId")
+    @ResponseBody
+    public List<Kecheng> querykechenId(){
+
+        return kechengService.querykechenId();
+    }
+
+    //审核通过
+    @RequestMapping("updatekechenId")
+    @ResponseBody
+    public String  updatekechenId(Integer id){
+        kechengService.updatekechenId(id);
+        return "审核通过";
     }
 
     //批量删除
@@ -98,5 +117,7 @@ public class KechengController {
         }
 
     }
+
+
 
 }

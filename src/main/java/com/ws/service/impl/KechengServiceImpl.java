@@ -64,4 +64,16 @@ public class KechengServiceImpl implements KechengService {
     public List<Kecheng> querykechen3() {
         return kechengMapper.querykechen3();
     }
+
+    //查询没有审核的
+    @Override
+    public List<Kecheng> querykechenId() {
+        return kechengMapper.querykechenId();
+    }
+
+    //通过审核
+    @Override
+    public void updatekechenId(Integer id) {
+        kechengMapper.updatekechenId(id);
+    }
 }

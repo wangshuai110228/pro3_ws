@@ -17,4 +17,8 @@ public interface KechengService {
     Kecheng queryKechengById(Integer id);
 
     List<Kecheng> querykechen3();
+
+    List<Kecheng> querykechenId();
+
+    void updatekechenId(Integer id);
 }
