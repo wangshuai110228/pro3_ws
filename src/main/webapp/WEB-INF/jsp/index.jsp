@@ -23,8 +23,20 @@
 <div class="easyui-layout" data-options="fit:true">
 <!-- 上 -->
 <div
-data-options="region:'north',height:100,title:'北',collapsidle:false"
->
+data-options="region:'north',height:100,title:'第一组项目展示中心',collapsidle:false" style="z-index:999999;background: url(${path}/images/66.jpg);background-size:100%，100%">
+
+ <div  align="right">
+
+	 <h1>
+		 当前登陆人:${user.name}&nbsp&nbsp&nbsp
+
+		 <input type="button" value="注销" onclick="clearname()">
+
+	 </h1>
+
+
+ </div>
+
 </div>
 <!-- 左 -->
 <div
@@ -90,6 +102,11 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 </body>
 
 <script type="text/javascript">
+
+	//注销
+	function clearname(){
+		location.href="<%=request.getContextPath()%>/clearUser";
+	}
 	//异 步树
 	/*$("#asynTree").tree({
 		url:"<%=request.getContextPath() %>/tree/queryTreeAsyn.do?pid=0",
