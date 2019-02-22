@@ -26,6 +26,16 @@ public interface TreeService {
 
     List<Tree> queryTree7(Integer uid, Tree tree);
 
+
+    List<Tree> queryTree8(Integer uid,Tree tree);
+
+    List<Tree> queryTree9(Integer uid,Tree tree);
+
+    List<Tree> queryTree10(Integer uid,Tree tree);
+
+
+
+
     UserBean queryUserByLoginNumber(String username);
 
 

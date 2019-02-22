@@ -1,11 +1,9 @@
 package com.ws.controller;
 
-import com.aliyun.oss.OSSClient;
 import com.ws.bean.Dept;
 import com.ws.bean.Role;
 import com.ws.bean.UserBean;
 import com.ws.service.UserBeanService;
-import com.ws.utils.AliyunOSSClientUtil;
 import com.ws.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

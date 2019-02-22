@@ -34,4 +34,16 @@ public interface WebUserMapper {
     //删除
     @Delete("delete from s_webuser where id=#{s}")
     void deleteAll(String s);
+
+    //未通过查询
+    @Select("SELECT * FROM s_webuser where ttid=0 LIMIT #{start},#{rows}")
+    List<WebUser> queryWebUserWei(int start, int rows, WebUser webuser);
+
+    //通过审核
+    @Update("UPDATE s_webuser w set w.ttid=1 WHERE w.id =#{id}")
+    void updateWebUserId(Integer id);
+
+    //查看审核状态
+    @Select("SELECT * FROM s_webuser where id=#{id} ")
+    WebUser queryWebUserTtid(Integer id);
 }

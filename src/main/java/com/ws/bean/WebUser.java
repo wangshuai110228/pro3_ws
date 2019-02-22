@@ -17,6 +17,8 @@ public class WebUser {
     private   String  expiredate;
 
 
+    private  Integer   ttid;
+    private   String  phone;
 
 
 
@@ -77,6 +79,19 @@ public class WebUser {
         this.expiredate = expiredate;
     }
 
+    public Integer getTtid() {
+        return ttid;
+    }
 
+    public void setTtid(Integer ttid) {
+        this.ttid = ttid;
+    }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

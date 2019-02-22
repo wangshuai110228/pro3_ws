@@ -14,4 +14,10 @@ public interface WebUserService {
     void addWebUser(WebUser webuser);
 
     void deleteAll(String id);
+
+    HashMap<String, Object> queryWebUserWei(int page, int rows, WebUser webuser);
+
+    void updateWebUserId(Integer id);
+
+    WebUser queryWebUserTtid(Integer id);
 }

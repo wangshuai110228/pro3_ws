@@ -62,4 +62,35 @@ public class WebUserServiceImpl implements WebUserService {
             webUserMapper.deleteAll(sid[i]);
         }
     }
+
+    //查询未审核
+    @Override
+    public HashMap<String, Object> queryWebUserWei(int page, int rows, WebUser webuser) {
+        HashMap<String, Object>  hashMap = new  HashMap<>();
+        //查询总条数
+        long  total =webUserMapper.queryTota(webuser);
+
+        //计算开始位置
+        int start =(page-1)*rows;
+        //计算结束位置
+        int  end = start +rows;
+        List<WebUser> list  = webUserMapper.queryWebUserWei(start,rows, webuser);
+        hashMap.put("total",total);
+        hashMap.put("rows",list);
+
+
+        return hashMap;
+    }
+
+    //通过审核
+    @Override
+    public void updateWebUserId(Integer id) {
+        webUserMapper.updateWebUserId(id);
+    }
+
+    //查询审核通过了吗
+    @Override
+    public WebUser queryWebUserTtid(Integer id) {
+        return webUserMapper.queryWebUserTtid(id);
+    }
 }

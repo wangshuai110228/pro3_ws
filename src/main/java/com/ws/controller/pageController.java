@@ -95,4 +95,51 @@ public class pageController {
 
         return "advertisement";
     }
+
+    @RequestMapping("administration")
+    public  String  administration(){
+
+        return "Administration";
+    }
+
+
+    @RequestMapping("exeList")
+    public  String  exeList(){
+
+        return "exeList";
+    }
+
+    @RequestMapping("kechengshen")
+    public  String  kechengshen(){
+
+        return "kechengshen";
+    }
+
+    @RequestMapping("webusertt")
+    public  String  webusertt(){
+
+        return "webusertt";
+    }
+
+    @RequestMapping("Task")
+    public  String  Task(){
+
+        return "Task";
+    }
+
+
+    @RequestMapping("woTask")
+    public  String  woTask(){
+
+        return "woTask";
+    }
+
+
+    @RequestMapping("weiTask")
+    public  String  weiTask(){
+
+        return "weiTask";
+    }
+
+
 }

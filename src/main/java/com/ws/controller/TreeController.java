@@ -83,6 +83,33 @@ public class TreeController {
         return treeService.queryTree7(uid,tree);
     }
 
+    //审核树
+    @RequestMapping("examineTree")
+    @ResponseBody
+    public List<Tree> examineTree(HttpSession session,Tree tree){
+        UserBean user = (UserBean) session.getAttribute("user");
+        Integer uid = user.getId();
+        return treeService.queryTree8(uid,tree);
+    }
+
+    //任务树
+    @RequestMapping("taskTree")
+    @ResponseBody
+    public List<Tree> taskTree(HttpSession session,Tree tree){
+        UserBean user = (UserBean) session.getAttribute("user");
+        Integer uid = user.getId();
+        return treeService.queryTree9(uid,tree);
+    }
+
+    //投诉树
+    @RequestMapping("complaintTree")
+    @ResponseBody
+    public List<Tree> complaintTree(HttpSession session,Tree tree){
+        UserBean user = (UserBean) session.getAttribute("user");
+        Integer uid = user.getId();
+        return treeService.queryTree10(uid,tree);
+    }
+
     //登陆 queryLogin
     //登录
     @RequestMapping("login")

@@ -56,6 +56,18 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 		<ul id="asynTree6"></ul>
 	</div>
 
+	<div data-options="title:'审核中心'">
+		<ul id="asynTree7"></ul>
+	</div>
+
+	<div data-options="title:'任务中心'">
+		<ul id="asynTree8"></ul>
+	</div>
+
+	<div data-options="title:'投诉中心'">
+		<ul id="asynTree9"></ul>
+	</div>
+
 
 </div>
 
@@ -315,7 +327,7 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 
 	})
 
-    //加载同步树：工具js    广告
+    //加载同步树：工具js    新闻
 
     $("#asynTree5").tree({
         url:"<%=request.getContextPath() %>/xwTree",
@@ -357,45 +369,166 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
     })
 
 
-    //加载同步树：工具js    广告
+    //加载同步树：工具js    vip
 
-    $("#asynTree6").tree({
-        url:"<%=request.getContextPath() %>/vipTree",
-        parentField:"pid",
-        onClick:function(node){
-            //alert(node.url)
-            if(node.url!=null){
-                if($("#myTabs").tabs("exists",node.text)){
+	$("#asynTree6").tree({
+		url:"<%=request.getContextPath() %>/vipTree",
+		parentField:"pid",
+		onClick:function(node){
+			//alert(node.url)
+			if(node.url!=null){
+				if($("#myTabs").tabs("exists",node.text)){
 
-                    $("#myTabs").tabs("select",node.text);
-                }else{
+					$("#myTabs").tabs("select",node.text);
+				}else{
 
-                    $("#myTabs").tabs("add",{
-                        title:node.text,
-                        closable:true,
-                        content:createJsp(node.url),
+					$("#myTabs").tabs("add",{
+						title:node.text,
+						closable:true,
+						content:createJsp(node.url),
 
-                        //更新页面
-                        tools:[{
-                            iconCls:'icon-mini-refresh',
-                            handler:function(){
-                                // 更新选项卡
-                                var tab = $('#myTabs').tabs('getSelected');
-                                $("#myTabs").tabs('update',{
-                                    tab: tab,
-                                    options:{
-                                        content: createJsp(node.url)
-                                    }
-                                });
-                            }
-                        }]
+						//更新页面
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler:function(){
+								// 更新选项卡
+								var tab = $('#myTabs').tabs('getSelected');
+								$("#myTabs").tabs('update',{
+									tab: tab,
+									options:{
+										content: createJsp(node.url)
+									}
+								});
+							}
+						}]
 
-                    })
-                }
+					})
+				}
 
-            }
-        }
+			}
+		}
 
-    })
+	})
+
+	//加载同步树：工具js    审核
+
+	$("#asynTree7").tree({
+		url:"<%=request.getContextPath() %>/examineTree",
+		parentField:"pid",
+		onClick:function(node){
+			//alert(node.url)
+			if(node.url!=null){
+				if($("#myTabs").tabs("exists",node.text)){
+
+					$("#myTabs").tabs("select",node.text);
+				}else{
+
+					$("#myTabs").tabs("add",{
+						title:node.text,
+						closable:true,
+						content:createJsp(node.url),
+
+						//更新页面
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler:function(){
+								// 更新选项卡
+								var tab = $('#myTabs').tabs('getSelected');
+								$("#myTabs").tabs('update',{
+									tab: tab,
+									options:{
+										content: createJsp(node.url)
+									}
+								});
+							}
+						}]
+
+					})
+				}
+
+			}
+		}
+
+	})
+	//加载同步树：工具js   任务
+
+	$("#asynTree8").tree({
+		url:"<%=request.getContextPath() %>/taskTree",
+		parentField:"pid",
+		onClick:function(node){
+			//alert(node.url)
+			if(node.url!=null){
+				if($("#myTabs").tabs("exists",node.text)){
+
+					$("#myTabs").tabs("select",node.text);
+				}else{
+
+					$("#myTabs").tabs("add",{
+						title:node.text,
+						closable:true,
+						content:createJsp(node.url),
+
+						//更新页面
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler:function(){
+								// 更新选项卡
+								var tab = $('#myTabs').tabs('getSelected');
+								$("#myTabs").tabs('update',{
+									tab: tab,
+									options:{
+										content: createJsp(node.url)
+									}
+								});
+							}
+						}]
+
+					})
+				}
+
+			}
+		}
+
+	})
+	//加载同步树：工具js    投诉
+
+	$("#asynTree9").tree({
+		url:"<%=request.getContextPath() %>/complaintTree",
+		parentField:"pid",
+		onClick:function(node){
+			//alert(node.url)
+			if(node.url!=null){
+				if($("#myTabs").tabs("exists",node.text)){
+
+					$("#myTabs").tabs("select",node.text);
+				}else{
+
+					$("#myTabs").tabs("add",{
+						title:node.text,
+						closable:true,
+						content:createJsp(node.url),
+
+						//更新页面
+						tools:[{
+							iconCls:'icon-mini-refresh',
+							handler:function(){
+								// 更新选项卡
+								var tab = $('#myTabs').tabs('getSelected');
+								$("#myTabs").tabs('update',{
+									tab: tab,
+									options:{
+										content: createJsp(node.url)
+									}
+								});
+							}
+						}]
+
+					})
+				}
+
+			}
+		}
+
+	})
 </script>
 </html>
