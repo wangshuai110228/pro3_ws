@@ -19,10 +19,10 @@
     <script type="text/javascript" src="<%=request.getContextPath() %>/jquery-easyui-1.5/jquery.easyui.min.js"></script>
     <!-- 引文easyui支持中文js -->
     <script type="text/javascript" src="<%=request.getContextPath() %>/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
-    <!-- 引入uploadify css js文件 -->
+    <!-- 引入uploadify css js文件   -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/js/uploadify/uploadify.css">
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/uploadify/jquery.uploadify.min.js"></script>
-    <!-- 引入kindeditor css js文件 -->
+    <!-- 引入kindeditor css js文件    -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/js/kindeditor-4.1.10/themes/default/default.css" />
     <script src="<%=request.getContextPath() %>/js/kindeditor-4.1.10/kindeditor-all.js"></script>
 </head>
