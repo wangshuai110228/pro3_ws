@@ -3,12 +3,14 @@ package com.ws.bean;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 //异常表
 @Document(collection="excption")
-public class ExcptionHandler {
+public class ExcptionHandler implements Serializable {
 
+    private static final long serialVersionUID = 3535503453880343866L;
     private String id;//主键ID
 
     private String facility; //用户设备型号

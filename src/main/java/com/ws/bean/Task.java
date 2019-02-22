@@ -1,7 +1,10 @@
 package com.ws.bean;
 
-public class Task {
+import java.io.Serializable;
 
+public class Task implements Serializable {
+
+    private static final long serialVersionUID = 8237302298846193583L;
     private Integer id;
     private String uuid;
 

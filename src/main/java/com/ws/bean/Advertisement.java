@@ -1,9 +1,11 @@
 package com.ws.bean;
 
-public class Advertisement {
+import java.io.Serializable;
+
+public class Advertisement implements Serializable {
 
 
-
+    private static final long serialVersionUID = -556493573839358540L;
     private Integer id;
     private String url;
     private String href;

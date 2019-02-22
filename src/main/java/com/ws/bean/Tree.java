@@ -7,6 +7,7 @@
  */  
 package com.ws.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /** 
@@ -20,7 +21,8 @@ import java.util.List;
  * 修改备注：       
  * @version </pre>    
  */
-public class Tree {
+public class Tree implements Serializable {
+	private static final long serialVersionUID = 8395790841582308064L;
 	private Integer id;
 	private String text;
 	private Integer pid;

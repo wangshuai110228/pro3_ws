@@ -1,6 +1,9 @@
 package com.ws.bean;
 
-public class UserBean {
+import java.io.Serializable;
+
+public class UserBean implements Serializable {
+    private static final long serialVersionUID = -20686688340125054L;
     private Integer id;
     private String name;
     private String sex;

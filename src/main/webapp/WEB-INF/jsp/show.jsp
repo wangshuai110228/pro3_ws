@@ -155,25 +155,25 @@ $("#myTable").datagrid({
 	columns:[[
 	          {field:'check',checkbox:true},
         {field:'id',title:'编号'},
-        {field:'userimg',title:'封面',formatter:function(value,row,index){
+        {field:'userimg',title:'封面',width:100,formatter:function(value,row,index){
             return "<img width='50px' height='50px' src='"+value+"'>";
         }},
-        {field:'name',title:'姓名'},
-		{field:'age',title:'年龄'},
-        {field:'sex',title:'性别',formatter:function(value,row,index){
+        {field:'name',title:'姓名',width:100},
+		{field:'age',title:'年龄',width:100},
+        {field:'sex',title:'性别',width:80,formatter:function(value,row,index){
             if(value==1){
                 return "男";
             }else{
                 return "女";
             }
         }},
-		{field:'phone',title:'手机号码'},
-        {field:'dname',title:'部门'},
-        {field:"rname",title:"角色"},
+		{field:'phone',title:'手机号码',width:100},
+        {field:'dname',title:'部门',width:80},
+        {field:"rname",title:"角色",width:100},
         {field:'username',title:'账号'},
         {field:'userpwd',title:'密码'},
 
-		{field:'registration_date',title:'开号时间'},
+		{field:'registration_date',title:'开号时间',width:100},
         {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
             var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
             str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"

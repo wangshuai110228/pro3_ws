@@ -1,8 +1,11 @@
 package com.ws.bean;
 
-public class ProblemBean {
+import java.io.Serializable;
 
-   private Integer id;
+public class ProblemBean implements Serializable {
+
+    private static final long serialVersionUID = 6675126324071626514L;
+    private Integer id;
     private String pname;
     private String pcreatetime;
     private String psfzr;

@@ -1,7 +1,10 @@
 package com.ws.bean;
 
-public class PowerMenu {
+import java.io.Serializable;
 
+public class PowerMenu implements Serializable {
+
+    private static final long serialVersionUID = -2111824331995641606L;
     private Integer id;
     private String name;
     private String url;

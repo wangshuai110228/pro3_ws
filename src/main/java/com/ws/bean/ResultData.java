@@ -1,7 +1,10 @@
 package com.ws.bean;
 
-public class ResultData<T> {
+import java.io.Serializable;
 
+public class ResultData<T> implements Serializable {
+
+    private static final long serialVersionUID = 2721636316536981165L;
     private T data;
 
     private Integer code = 200;

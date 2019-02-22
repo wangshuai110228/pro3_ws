@@ -193,6 +193,10 @@
 					<artifactId>spring</artifactId>
 					<groupId>org.springframework</groupId>
 				</exclusion>
+				<exclusion>
+					<groupId>org.javassist</groupId>
+					<artifactId>javassist</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>

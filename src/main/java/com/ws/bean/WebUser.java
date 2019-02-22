@@ -2,11 +2,13 @@ package com.ws.bean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-public class WebUser {
+public class WebUser implements Serializable {
 
+    private static final long serialVersionUID = -6357565301670515304L;
     private Integer id;
     private String name;
     private String pwd;
