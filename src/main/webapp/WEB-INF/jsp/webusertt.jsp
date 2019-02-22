@@ -242,18 +242,18 @@
         url:"<%=request.getContextPath()%>/queryWebUserWei",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'name',title:'网站用户名称'},
-            {field:'pwd',title:'用户密码'},
-            {field:'email',title:'用户邮箱'},
-            {field:'sex',title:'性别',formatter:function(value,row,index){
+            {field:'id',title:'编号',width:100,align:'center'},
+            {field:'name',title:'网站用户名称',width:100,align:'center'},
+            {field:'pwd',title:'用户密码',width:100,align:'center'},
+            {field:'email',title:'用户邮箱',width:100,align:'center'},
+            {field:'sex',title:'性别',width:100,align:'center',formatter:function(value,row,index){
                     if(value==1){
                         return "男";
                     }else{
                         return "女";
                     }
                 }},
-            {field:'phone',title:'手机号码'},
+            {field:'phone',title:'手机号码',width:100,align:'center'},
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                     var str = "<a href='javascript:UpdateByid("+row.id+")'>通过审核</a>"
                     str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"

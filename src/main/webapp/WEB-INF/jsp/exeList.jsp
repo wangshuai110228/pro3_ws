@@ -46,13 +46,13 @@
         url:"<%=request.getContextPath()%>/queryExcption",
         columns:[[
             {field:'id',title:'编号',align:'center',checkbox:true, width:20},
-            {field:'facility',title:'用户设备型号',align:'center',width:110},
-            {field:'errorDate',title:'发生错误的时间',align:'center',width:250},
+            {field:'facility',title:'用户设备型号',align:'center',width:150},
+            {field:'errorDate',title:'发生错误的时间',align:'center',width:300},
             {field:'url',title:'发生错误的路径',align:'center',width:200},
             {field:'ip',title:'操作的ip',align:'center',width:80},
-            {field:'param',title:'错误的参数',align:'center',width:120},
-            {field:'genre',title:'异常类型',align:'center',width:100},
-            {field:'message',title:'异常信息',align:'center',width:100},
+            {field:'param',title:'错误的参数',align:'center',width:150},
+            {field:'genre',title:'异常类型',align:'center',width:150},
+            {field:'message',title:'异常信息',align:'center',width:150},
             {field:'操作',title:'操作',align:'center',
                 formatter: function(value,row,index){
                     var str = '<a href="javascript:removeException(\''+row.id+'\')">删除</a>';

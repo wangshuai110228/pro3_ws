@@ -18,4 +18,26 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> queryRole() {
         return roleMapper.queryRole();
     }
+
+
+    //删除
+    @Override
+    public void deleteAll(String id) {
+        String[] sid = id.split(",");
+        for (int i=0;i<sid.length;i++) {
+            roleMapper.deleteAll(sid[i]);
+        }
+    }
+
+    //修改
+    @Override
+    public void updateRole(Role role) {
+
+    }
+
+    //新增
+    @Override
+    public void addRole(Role role) {
+        roleMapper.addRole(role);
+    }
 }

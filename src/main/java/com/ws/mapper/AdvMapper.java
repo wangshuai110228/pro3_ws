@@ -12,13 +12,27 @@ public interface AdvMapper {
 
 
     //查询总条数
-
-    @Select("select count(*)  from t_advertisement")
+    //@Select("select count(*)  from t_advertisement")
+    @Select("<script>"
+            + "select count(*) from t_advertisement "
+            + " where 1=1 "
+            + " <if test='adv.content!=null'> "
+            + " and content like '%${adv.content}%' "
+            + "</if>"
+            + "</script>")
     long queryTota(@Param("adv") Advertisement adv);
 
     //查询
 
-    @Select("SELECT * FROM t_advertisement LIMIT #{start},#{rows}")
+    //@Select("SELECT * FROM t_advertisement LIMIT #{start},#{rows}")
+    @Select("<script>"
+            + "SELECT * FROM t_advertisement "
+            + " where 1=1 "
+            + " <if test='adv.content!=null'> "
+            + " and content like '%${adv.content}%' "
+            + " LIMIT #{start},#{rows} "
+            + "</if>"
+            + "</script>")
     List<Advertisement> queryPageAdv(@Param("start")int start, @Param("rows")int rows, @Param("adv") Advertisement adv);
 
 

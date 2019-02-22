@@ -28,9 +28,10 @@
 </head>
 <body>
 <div id="searchDiv">
-<%--
-    广告名称：<input class="easyui-textbox" id="name">
-    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>--%>
+    描述：<input class="easyui-textbox" id="content">
+    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
+
+
 
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
@@ -242,7 +243,7 @@
     //条件查询
     function searchUSer(){
         $("#myTable").datagrid("load",{
-
+            content:$("#content").textbox("getValue")
         })
     }
 
@@ -251,14 +252,14 @@
         url:"<%=request.getContextPath()%>/queryAdvList",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'url',title:'封面',formatter:function(value,row,index){
+            {field:'id',title:'编号',width:50,align:'center'},
+            {field:'url',title:'封面',width:60,align:'center',formatter:function(value,row,index){
                     return "<a href='"+row.href+"'><img width='50px' height='50px' src='"+value+"'></a>";
                 }},
 
 
-            {field:'href',title:'网站地址'},
-            {field:'content',title:'广告描述'},
+            {field:'href',title:'网站地址',width:100,align:'center'},
+            {field:'content',title:'广告描述',width:100,align:'center'},
 
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                     var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"

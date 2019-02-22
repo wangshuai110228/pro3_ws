@@ -9,19 +9,27 @@ import java.util.List;
 @Mapper
 public interface XinwenMapper {
     // 查询总条数
-    @Select("select count(*) from t_xinwen")
-    /*@Select("<script>"
+    //@Select("select count(*) from t_xinwen")
+    @Select("<script>"
             + "select count(*) from t_xinwen "
-            + "WHERE 1=1"
-            + "<if test='answer.contont!=null'>"
-            + "and a.contont like '%${answer.contont}%'"
+            + " where 1=1 "
+            + " <if test='xinwen.content!=null'> "
+            + " and content like '%${xinwen.content}%' "
             + "</if>"
-            + "</script>")*/
+            + "</script>")
     long queryTotal(@Param("xinwen")Xinwen xinwen);
 
 
     //查询
-    @Select("SELECT * FROM t_xinwen  LIMIT #{start},#{rows}")
+    //@Select("SELECT * FROM t_xinwen  LIMIT #{start},#{rows}")
+    @Select("<script>"
+            + "SELECT * FROM t_xinwen "
+            + " where 1=1 "
+            + " <if test='xinwen.content!=null'> "
+            + " and content like '%${xinwen.content}%' "
+            + " LIMIT #{start},#{rows} "
+            + "</if>"
+            + "</script>")
     List<Xinwen> queryPageProblem(@Param("start")int start, @Param("rows")int rows, @Param("xinwen")Xinwen xinwen);
 
     // 修改

@@ -194,11 +194,11 @@
         url:"<%=request.getContextPath()%>/queryPinLun",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'puser',title:'评论人id'},
-            {field:'contont',title:'评论内容'},
-            {field:'ptime',title:'评论时间'},
-            {field:'status',title:'评论状态',formatter:function(value,row,index){
+            {field:'id',title:'编号',width:100,align:'center'},
+            {field:'puser',title:'评论人id',width:100,align:'center'},
+            {field:'contont',title:'评论内容',width:100,align:'center'},
+            {field:'ptime',title:'评论时间',width:100,align:'center'},
+            {field:'status',title:'评论状态',width:100,align:'center',formatter:function(value,row,index){
                 if(value==1){
                     return "发布";
                 }else{

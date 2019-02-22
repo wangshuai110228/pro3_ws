@@ -121,10 +121,10 @@
         url:"<%=request.getContextPath()%>/queryProblem2",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'pname',title:'提问人'},
-            {field:'pcreatetime',title:'提问时间'},
-            {field:'psfzr',title:'提问时间'},
+            {field:'id',title:'编号',width:100,align:'center'},
+            {field:'pname',title:'提问人',width:100,align:'center'},
+            {field:'pcreatetime',title:'提问时间',width:100,align:'center'},
+            {field:'psfzr',title:'提问时间',width:100,align:'center'},
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                     var str = "<a href='javascript:openUpdateBy("+row.id+")'>空</a>"
                     str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"

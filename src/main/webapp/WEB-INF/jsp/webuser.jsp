@@ -78,12 +78,6 @@
                     <input type="radio" value="0" name="member">否
                 </td>
             </tr>
-            <tr>
-                <td>手机号码</td>
-                <td>
-                    <input class="easyui-textbox" name="phone">
-                </td>
-            </tr>
         </table>
 
     </form>
@@ -272,7 +266,7 @@
                     }
                 }},
             {field:'expiredate',title:'注册时间'},
-            {field:'phone',title:'手机号码'},
+
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                     var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
                     str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"

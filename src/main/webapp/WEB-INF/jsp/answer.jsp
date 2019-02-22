@@ -32,7 +32,7 @@
     回答内容：<input class="easyui-textbox" id="contont">
 
 
-    <a href="javascript:searchUSer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
+    <a href="javascript:searchAnswer()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
 
 </div>
@@ -196,10 +196,10 @@
         url:"<%=request.getContextPath()%>/queryAnswer",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'contont',title:'回答内容'},
-            {field:'createtime',title:'回答时间'},
-            {field:'wid',title:'回答对应id'},
+            {field:'id',title:'编号',width:100,align:'center'},
+            {field:'contont',title:'回答内容',width:100,align:'center'},
+            {field:'createtime',title:'回答时间',width:100,align:'center'},
+            {field:'wid',title:'回答对应id',width:100,align:'center'},
 
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                     var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"

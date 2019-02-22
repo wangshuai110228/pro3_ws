@@ -22,4 +22,28 @@ public class RoleController {
 
         return roleService.queryRole();
     }
+
+    //批量删除
+    @RequestMapping("deleteRoleAll")
+    @ResponseBody
+    public  void  deleteAll(String id){
+        roleService.deleteAll(id);
+    }
+
+    //修改 ： 新增
+    @RequestMapping("addRole")
+    @ResponseBody
+    public void  addRole(Role role){
+
+        Integer id = role.getId();
+        if (id!=null){
+            //修改
+            roleService.updateRole(role);
+        }else {
+            //新增
+            roleService.addRole(role);
+        }
+
+    }
+
 }

@@ -33,8 +33,7 @@ public interface AnswerMapper {
             + "and a.contont like '%${answer.contont}%'"
             + "</if>"
             + "</script>")
-
-        long queryTotal(@Param("answer") Answer answer);
+    long queryTotal(@Param("answer") Answer answer);
 
     //查询
     //@Select("SELECT * FROM t_answer a LEFT JOIN  t_problem pm on a.wid=pm.id  LIMIT #{start},#{rows}")

@@ -27,10 +27,50 @@
 <div class="easyui-layout" data-options="fit:true">
     <!-- 角色权限============================================================= -->
     <div data-options="region:'west',title:'角色权限'" style="width:30%">
-        <!-- 查询角色-->
+<!-- 查询角色-->
         <table id="querRole"></table>
-
     </div>
+
+    <div id="searchDiv">
+
+<%--
+        <a href="javascript:deleteBys1()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
+--%>
+        <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
+    </div>
+
+    <!-- 定义角色表格 -->
+    <table id="myTable"> </table>
+    <!-- 定义新增表格 -->
+    <div id="myDialog" class="easyui-dialog" style="width:400px;height:300px" data-options="modal:true,maximizable:true,resizable:true,buttons:'#myButton',closed:true,iconCls:'icon-save'">
+        <form id="myForm" method="post">
+            <input style="display:none" name="id">
+            <input style="display:none" name="puser">
+            <input style="display:none" name="cid">
+            <input style="display:none" name="status">
+            <table>
+                <tr>
+                    <td>角色</td>
+                    <td>
+                        <input class="easyui-textbox" name="rname">
+                    </td>
+                </tr>
+                <tr>
+                    <td>简介</td>
+                    <td>
+                        <input class="easyui-textbox" name="info">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+    <!-- 定义按钮 -->
+    <div id="myButton">
+        <a href="javascript:add()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">保存</a>
+        <a href="javascript:closeDig()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">关闭</a>
+    </div>
+
 
 <!-- 权限列表====================================== -->
 <div data-options="region:'center',title:'权限列表'"style="width:40%">
@@ -101,6 +141,128 @@
 </body>
 
 <script>
+    //新增//修改
+    function add(){
+        $("#myForm").form("submit",{
+            url:"<%=request.getContextPath() %>/addRole",
+            success:function(){
+                $.messager.alert("提示","保存成功","info")
+                //关闭弹框
+                $("#myDialog").dialog("close")
+                //关闭
+                closeDig()
+                //刷新
+                searchAnswer()
+            }
+
+        })
+
+    }
+
+    //打开对话框
+    function openDig() {
+        //重置表单
+        $("#myForm").form("reset");
+        ////清除图片隐藏域
+        //$("#hideImg").val("");
+        //清除图片
+        //$("#mypic").prop("src", "");
+        //清空富文本框
+        //editor.html("");
+        //打开
+        $("#myDialog").dialog({
+            title:'新增角色',
+            closed:false
+
+        })
+    }
+
+    //关闭对话框
+    function closeDig(){
+        $("#myDialog").dialog("close")
+
+    }
+
+    //单个删除
+    function deleteByid(id){
+
+        //alert(id)
+        $.messager.confirm("提示","是否确定删除!",function(r){
+            if(r){
+                $.ajax({
+                    url:"<%=request.getContextPath() %>/deleteRoleAll",
+                    type:"post",
+                    data:{"id":id},
+                    success:function(){
+                        $.messager.alert("提示消息","删除成功","info");
+                        searchAnswer()
+                    },error:function(){
+                        $.messager.alert("提示消息","删除失败","error");
+
+
+                    }
+                })
+
+            }
+
+        })
+    }
+
+
+    //批量删除
+    function deleteBys1(){
+
+        //获取复选框
+        var arr = $("#myTable").datagrid("getChecked");
+        if(arr.length<=0){
+            $.messager.alert("提示消息","请至少选择一条数据！","warning");
+            return;
+        }
+        $.messager.confirm("提示","是否确认删除"+arr.length+"条数据？",function(r){
+            if(r){
+                var ids = "";
+                for(var i=0;i<arr.length;i++){
+                    //alert(arr[i].id);
+                    if(ids==""){
+                        ids += arr[i].id;
+                    }else{
+                        ids += ","+arr[i].id;
+                    }
+                }
+
+            }
+
+            //alert(ids)
+            $.ajax({
+                url:"<%=request.getContextPath() %>/deleteRoleAll",
+                type:"post",
+                data:{"id":ids},
+                success:function(){
+                    $.messager.alert("提示消息","删除成功","info");
+                    searchAnswer()
+                },error:function(){
+                    $.messager.alert("提示消息","删除失败","error");
+
+
+                }
+            })
+
+        })
+    }
+
+    //条件查询
+    function searchAnswer(){
+        $("#myTable").datagrid("load",{
+         /*   contont:$("#contont").textbox("getValue")*/
+        })
+    }
+
+
+
+
+
+
+
     $(function(){
         initPowerTree(-1);
         initTreeTable(-1); //初始化权限详细表格
@@ -112,12 +274,12 @@
         url:"<%=request.getContextPath()%>/queryRole",
         columns:[[
             {field:"check",checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'rname',title:'角色'},
-            {field:'info',title:'简介'},
-            {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
-                var str = "<a href='javascript:openUpdateBy("+row.id+")' >修改</a>"
-                str+="  <a href='javascript:openPower("+row.id+")'>赋权限</a>";
+            {field:'id',title:'编号',width:80,align:'center'},
+            {field:'rname',title:'角色',width:80,align:'center'},
+            {field:'info',title:'简介',width:80,align:'center'},
+            {field:'tools',title:'操作', width:80,align:'center',formatter:function(value,row,index){
+                var str = "<a href='javascript:openPower(\"+row.id+\")'>赋权限</a>"
+                str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"
                 return str;
             }},
 

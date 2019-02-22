@@ -39,13 +39,13 @@
     $("#myTable").datagrid({
         url:"<%=request.getContextPath()%>/queryAdministration",
         columns:[[
-            {field:'id',title:'编号',align:'center',checkbox:true, width:20},
-            {field:'sdianji',title:'点击量',align:'center',width:110},
-            {field:'kname',title:'热门课程名字',align:'center',width:250},
-            {field:'lteacher',title:'老师名字',align:'center',width:200},
-            {field:'kdesc',title:'介绍',align:'center',width:80},
+            {field:'id',title:'编号',width:100,align:'center',checkbox:true, width:20},
+            {field:'sdianji',title:'点击量',width:100,align:'center',width:110},
+            {field:'kname',title:'热门课程名字',width:100,align:'center',width:250},
+            {field:'lteacher',title:'老师名字',width:100,align:'center',width:200},
+            {field:'kdesc',title:'介绍',width:100,align:'center',width:80},
 
-            {field:'操作',title:'操作',align:'center',
+            {field:'操作',title:'操作',width:100,align:'center',
                 formatter: function(value,row,index){
                     var str = '<a href="javascript:removeException(\''+row.id+'\')">删除</a>';
                     return str;

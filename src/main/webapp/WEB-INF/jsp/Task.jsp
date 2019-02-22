@@ -131,11 +131,11 @@
         url:"<%=request.getContextPath()%>/queryTask",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'uname',title:'执行任务人'},
-            {field:'neirong',title:'任务内容'},
-            {field:'rdate',title:'发起任务时间'},
-            {field:'rtype',title:'性别',formatter:function(value,row,index){
+            {field:'id',title:'编号',width:100,align:'center'},
+            {field:'uname',title:'执行任务人',width:100,align:'center'},
+            {field:'neirong',title:'任务内容',width:100,align:'center'},
+            {field:'rdate',title:'发起任务时间',width:100,align:'center'},
+            {field:'rtype',title:'性别',width:100,align:'center',formatter:function(value,row,index){
                     if(value==1){
                         return "完成";
                     }else{

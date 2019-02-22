@@ -28,6 +28,13 @@
 </head>
 <body>
 <div id="searchDivk">
+
+    内容：<input class="easyui-textbox" id="content">
+    <a href="javascript:search()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
+
+
+
+
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
 
@@ -143,11 +150,10 @@
     //条件查询
     function search(){
         $("#myTablek").datagrid("load",{
-
+            content:$("#content").textbox("getValue")
         })
 
     }
-
     //单个删除
     function deleteByid(id){
         //alert(id)
@@ -209,13 +215,13 @@
         url:"<%=request.getContextPath()%>/queryXinwen",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'url',title:'新闻封面',formatter:function(value,row,index){
+            {field:'id',title:'编号',width:100,align:'center'},
+            {field:'url',title:'新闻封面',width:100,align:'center',formatter:function(value,row,index){
                 return "<img width='50px' height='50px' src='"+value+"'>";
             }},
-            {field:'content',title:'内容'},
-            {field:'createTime',title:'创建时间'},
-            {field:'createUser',title:'创建人'},
+            {field:'content',title:'内容',width:100,align:'center'},
+            {field:'createTime',title:'创建时间',width:100,align:'center'},
+            {field:'createUser',title:'创建人',width:100,align:'center'},
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                 var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
                 str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"

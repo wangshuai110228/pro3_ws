@@ -186,8 +186,8 @@
         url:"<%=request.getContextPath()%>/queryVip",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'vname',title:'会员名称',formatter:function(value,row,index){
+            {field:'id',title:'编号',width:100,align:'center'},
+            {field:'vname',title:'会员名称',width:100,align:'center',formatter:function(value,row,index){
                 if(value==1){
                     return "普通会员";
                 }else if(value==2){
@@ -200,7 +200,7 @@
                     return "vvvvip";
                 }
             }},
-            {field:'vprice',title:'会员价格'},
+            {field:'vprice',title:'会员价格',width:100,align:'center'},
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                 var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
                 str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"

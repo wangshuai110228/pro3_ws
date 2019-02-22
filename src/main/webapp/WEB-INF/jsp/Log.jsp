@@ -36,14 +36,14 @@ $("#myTable").datagrid({
 	url:"<%=request.getContextPath()%>/findLog",
 
 	columns:[[
-	          {field:'id',title:'编号'},
-	          {field:"createDate",title:'日志时间'},
-	          {field:"userName",title:'用户'},
-	          {field:"ip",title:'ip'},
-	          {field:"className",title:'类名'},
-	          {field:"method",title:'method'},
-	          {field:"reqParam",title:'reqParam'},
-	          {field:"repParam",title:'repParam'},
+	          {field:'id',title:'编号',width:300,align:'center'},
+	          {field:"createDate",title:'日志时间',width:300,align:'center'},
+	          /*{field:"userName",title:'用户',width:100,align:'center'},*/
+	          {field:"ip",title:'ip',width:100,align:'center'},
+	          {field:"className",title:'类名',width:100,align:'center'},
+	          {field:"method",title:'method',width:100,align:'center'},
+	        /*  {field:"reqParam",title:'reqParam',width:100,align:'center'},*/
+	          {field:"repParam",title:'repParam',width:100,align:'center'},
 	          
 	          
 	          ]],

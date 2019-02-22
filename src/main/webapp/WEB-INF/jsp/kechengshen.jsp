@@ -30,10 +30,10 @@
 
 <div id="searchDivk">
     <!---->
-    课程名称：<input class="easyui-textbox" id="kname">
+    <%--课程名称：<input class="easyui-textbox" id="kname">
 
     <a href="javascript:search()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
-
+--%>
 
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
@@ -328,13 +328,13 @@
         url:"<%=request.getContextPath()%>/querykechenId",
         columns:[[
             {field:'check',checkbox:true},
-            {field:'id',title:'编号'},
-            {field:'kname',title:'课程名称'},
-            {field:'kss',title:'课时数'},
-            {field:'lls',title:'浏览数'},
-            {field:'lteacher',title:'教师名字'},
-            {field:'oktime',title:'有效时间'},
-            {field:'type',title:'类别',formatter:function(value,row,index){
+            {field:'id',title:'编号',width:100,align:'center'},
+            {field:'kname',title:'课程名称',width:100,align:'center'},
+            {field:'kss',title:'课时数',width:100,align:'center'},
+            {field:'lls',title:'浏览数',width:100,align:'center'},
+            {field:'lteacher',title:'教师名字',width:100,align:'center'},
+            {field:'oktime',title:'有效时间',width:100,align:'center'},
+            {field:'type',title:'类别',width:100,align:'center',formatter:function(value,row,index){
 
                     if(value=1){
                         return "免费"
@@ -343,8 +343,8 @@
                     }
 
                 }},
-            {field:'kdesc',title:'课程介绍'},
-            {field:'kurl',title:'封面',formatter:function(value,row,index){
+            {field:'kdesc',title:'课程介绍',width:100,align:'center'},
+            {field:'kurl',title:'封面',width:100,align:'center',formatter:function(value,row,index){
                     return "<img width='50px' height='50px' src='"+value+"'>";
                 }},
 
