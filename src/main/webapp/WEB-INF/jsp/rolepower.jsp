@@ -274,11 +274,11 @@
         url:"<%=request.getContextPath()%>/queryRole",
         columns:[[
             {field:"check",checkbox:true},
-            {field:'id',title:'编号',width:80,align:'center'},
-            {field:'rname',title:'角色',width:80,align:'center'},
-            {field:'info',title:'简介',width:80,align:'center'},
-            {field:'tools',title:'操作', width:80,align:'center',formatter:function(value,row,index){
-                var str = "<a href='javascript:openPower(\"+row.id+\")'>赋权限</a>"
+            {field:'id',title:'编号',align:'center'},
+            {field:'rname',title:'角色',align:'center'},
+            {field:'info',title:'简介',align:'center'},
+            {field:'tools',title:'操作',align:'center',formatter:function(value,row,index){
+                var str = "<a href='javascript:openPower("+row.id+")'>赋权限</a>"
                 str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"
                 return str;
             }},
