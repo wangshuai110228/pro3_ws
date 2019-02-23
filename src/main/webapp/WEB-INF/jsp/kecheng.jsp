@@ -120,7 +120,7 @@
     //条件查询
     function search(){
         $("#myTablek").datagrid("load",{
-            kname:$("#kname").textbox("getValue")
+           /* kname:$("#kname").textbox("getValue")*/
         })
 
     }

@@ -254,7 +254,7 @@
             {field:'check',checkbox:true},
             {field:'id',title:'编号',width:50,align:'center'},
             {field:'url',title:'封面',width:60,align:'center',formatter:function(value,row,index){
-                    return "<a href='"+row.href+"'><img width='50px' height='50px' src='"+value+"'></a>";
+                    return "<img width='50px' height='50px' src='"+value+"'>";
                 }},
 
 
