@@ -22,15 +22,21 @@
 <div id="toolbar">
 	方法名:<input class="easyui-textbox" id="method">
 	请求参数:<input class="easyui-textbox" id="reqParam">
-	创建时间:<input class="easyui-datebox" id="start">
-	-<input class="easyui-datebox" id="end">
+	<%--创建时间:<input class="easyui-datebox" id="start">--%>
+	<%---<input class="easyui-datebox" id="end"><br>--%>
 	<a href="javascript:searchLog()" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>
-	
+	<a href="javascript:outWorld()"  class="btn btn-info"  style="width: 100px;margin-left: 290px;margin-top: -100px;">导出日志</a>
 </div>
 
 <table id="myTable"></table>
 </body>
 <script type="text/javascript">
+
+	//导出Excel文档
+	function outWorld(){
+		location.href="exportApplyForm";
+
+	}
 
 $("#myTable").datagrid({
 	url:"<%=request.getContextPath()%>/findLog",

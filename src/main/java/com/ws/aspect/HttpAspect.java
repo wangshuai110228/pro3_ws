@@ -58,7 +58,7 @@ public class HttpAspect {
         System.out.println("进去切点。。。。。");
         LogBean logBean = new LogBean();
         //获取时间
-        logBean.setCreateDate(new Date());
+        logBean.setCreateDate(new Date().toString());
         //获取类名
         String classname = joinPoint.getTarget().getClass().getSimpleName();
         logBean.setClassName(classname);

@@ -14,7 +14,7 @@ public class LogBean  implements Serializable {
 	private static final long serialVersionUID = 6359894963738932384L;
 	private String id;
 	private Integer userId;
-	private Date createDate;
+	private String createDate;
 	private String ip;
 	private String className;
 	private String method;
@@ -62,12 +62,19 @@ public class LogBean  implements Serializable {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public Date getCreateDate() {
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public String getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
+
 	public String getIp() {
 		return ip;
 	}
