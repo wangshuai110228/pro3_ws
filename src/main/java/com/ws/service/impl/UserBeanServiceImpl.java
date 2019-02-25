@@ -77,6 +77,8 @@ public class UserBeanServiceImpl implements UserBeanService {
     @Override
     public void addUserBean(UserBean userbean) {
         userBeanMappper.addUserBean(userbean);
+
+
     }
 //修改回显
     @Override

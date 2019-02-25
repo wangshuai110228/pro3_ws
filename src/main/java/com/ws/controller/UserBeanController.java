@@ -5,6 +5,7 @@ import com.ws.bean.Role;
 import com.ws.bean.UserBean;
 import com.ws.service.UserBeanService;
 import com.ws.utils.FileUtil;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,18 +98,21 @@ public class UserBeanController {
         }
     }
 
-
+//oss 测试上传图片
     @RequestMapping(value = "/headImgUpload.json", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> headImgUpload(HttpServletRequest request, MultipartFile file) throws IOException {
-        Map<String, Object> value = new HashMap<String, Object>();
-        value.put("success", true);
-        value.put("errorCode", 0);
-        value.put("errorMsg", "");
+    public String headImgUpload(HttpServletRequest request,@RequestParam(value="picFile",required=false) MultipartFile file) throws IOException {
+
+
+        //Map<String, Object> value = new HashMap<String, Object>();
+        //value.put("success", true);
+        //value.put("errorCode", 0);
+        //value.put("errorMsg", "");
         String head = userBeanService.updateHead(file, 4);//此处是调用上传服务接口，4是需要更新的userId 测试数据。
         System.out.println(head);
-        value.put("data", head);
-        return value;
+        //value.put("data", head);
+
+       return head;
     }
 
 

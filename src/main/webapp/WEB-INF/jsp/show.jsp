@@ -2,6 +2,29 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+<style type="text/css">
+	.filePicker {
+		margin: 200px;
+		width: 200px;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		color: #fff;
+		background: #00b7ee;
+	}
+
+	.filePicker label {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.filePicker input[type="file"] {
+		display: none;
+	}
+
+</style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -41,21 +64,27 @@
 	</table> 
 	<!-- 定义新增表格 -->
 		<div id="myDialog" class="easyui-dialog" style="width:500px;height:400px" data-options="modal:true,maximizable:true,resizable:true,buttons:'#myButton',closed:true,iconCls:'icon-save'">
-	<form id="myForm" method="post">
+	<form id="myForm" method="post"  id="uploadForm" enctype="multipart/form-data">
 	<input style="display:none" name="id">
 	 <table>
   <tr>
 	<td>头像</td>
 	<td>
-		<!-- 显示图片 -->
-		<img width="100px" height="100px"  id="mypic">
+		<%--<!-- 显示图片 -->--%>
+		<img width="100px" height="100px" src="" id="mypic">
 		<!-- 文件域 上传图片 -->
 		<div id="eimg"></div>
-		<!-- 隐藏域 上传图片的路径 -->
-		<input type="hidden" name="userimg"  id="create_user">
-
-		<%--显示进度条--%>
+	<!-- 隐藏域 上传图片的路径 -->
+		<input  name="userimg"  id="create_user">
+		<%--&lt;%&ndash;&lt;%&ndash;显示进度条&ndash;%&gt;&ndash;%&gt;--%>
 		<div id="uploadfileQueue"></div>
+
+
+
+			<%--<div  id="preview_box"></div>--%>
+		<%--<input id="img_input" type="file" accept="image/*" />--%>
+
+
 	</td>
   </tr>
 
@@ -342,6 +371,10 @@ function deleteBys(){
 		
 	}
 
+
+
+
+
 ////初始化uploadify
 
 	$("#eimg").uploadify({
@@ -359,7 +392,8 @@ function deleteBys(){
 		//文件选择后的容器ID
 		'queueID': 'uploadfileQueue',
 		//后台运行上传的程序
-		'uploader': '<%=request.getContextPath()%>/uploadImg',
+
+		'uploader': '<%=request.getContextPath()%>/headImgUpload.json',
 		'width': '100',
 		'height': '24',
 		//是否支持多文件上传，这里为true，你在选择文件的时候，就可以选择多个文件
@@ -392,15 +426,62 @@ function deleteBys(){
 		},
 		//上传到服务器，服务器返回相应信息到data里
 		'onUploadSuccess': function (file, data, response) {
+
+				//alert(data);
+			var  d =$("#mypic").attr("src", data);
+
 			//alert(data);
-			$("#mypic").attr("src", "<%=request.getContextPath()%>/"+data);
 			$("#create_user").val(data);
 		},
+
+
 		//多文件上传，服务器返回相应的信息
 		'onQueueComplete': function (queueData) {
 			//alert(queueData.uploadsSuccessful);
 		}
 	});
+
+
+
+
+
+
+
+$("#img_input").on("change", function(e) {
+	var file = e.target.files[0]; // 获取图片资源
+	var fd = new FormData(); // 用formdata上传文件
+
+	// 只选择图片文件
+	if (!file.type.match('image.*')) {
+		return false;
+	}
+
+	fd.append('file', file, file.name); // 填入文件
+
+	$.ajax({
+		url: 'headImgUpload.json',
+		data: fd,
+		processData: false,
+		contentType: false,
+		type: 'POST',
+		success: function () {
+			// 成功后显示文件预览
+			var reader = new FileReader();
+			reader.readAsDataURL(file); // 读取文件
+			// 渲染文件
+			reader.onload = function(ev) {
+				var img = '<img class="preview" src="' + ev.target.result + '" alt="preview"/>';
+
+				$("#preview_box").empty().append(img);
+			}
+		}
+	});
+});
+
+
+
+
+
 
 </script>
 </html>
