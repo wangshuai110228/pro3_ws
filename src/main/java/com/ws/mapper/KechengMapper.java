@@ -24,7 +24,7 @@ public interface KechengMapper {
 
     //查询
   @Select("SELECT * FROM t_kecheng LIMIT #{start},#{rows}")
-   /* @Select("<script>"
+   /*    @Select("<script>"
             + "select *  from t_kecheng"
             + "WHERE 1=1"
             + "<if test='kecheng.kname!=null'>"
