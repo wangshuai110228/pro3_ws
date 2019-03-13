@@ -2,6 +2,7 @@ package com.ws.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.ws.bean.Meal;
 import com.ws.bean.WebUser;
 import com.ws.service.WebUserService;
 import com.ws.utils.CommonCanstant;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 @Controller
 public class WebUserController {
@@ -24,45 +27,52 @@ public class WebUserController {
     private WebUserService webUserService;
 
 
-
     //查询用户表
     @RequestMapping("queryWebUser")
     @ResponseBody
-    public HashMap<String,Object> queryCatalog(int page, int rows, WebUser webuser){
+    public HashMap<String, Object> queryCatalog(int page, int rows, WebUser webuser) {
 
-        HashMap<String,Object> list = webUserService.queryWebUser(page,rows, webuser);
+        HashMap<String, Object> list = webUserService.queryWebUser(page, rows, webuser);
 
         return list;
     }
 
 
-
     //修改回显
     @RequestMapping("queryWebUserById")
     @ResponseBody
-    public WebUser queryWebUserById(Integer id){
+    public WebUser queryWebUserById(Integer id) {
 
-        WebUser  webUser   = webUserService.queryWebUserById(id);
+        WebUser webUser = webUserService.queryWebUserById(id);
         return webUser;
     }
-
 
 
     //修改 ： 新增
     @RequestMapping("addWebUser")
     @ResponseBody
-    public void  addAnswer(WebUser webuser){
+    public void addAnswer(WebUser webuser) {
+
+        Random rand = new Random();//生成随机数
+        String cardNnumer = "";
+        for (int a = 0; a < 6; a++) {
+            cardNnumer += rand.nextInt(10);//生成6位数字
+        }
 
         Integer id = webuser.getId();
-        if (id!=null){
+
+
+        if (id != null) {
             //修改
             webUserService.updateWebUser(webuser);
-        }else {
+        } else {
             //新增
             Date data = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
             webuser.setExpiredate(sdf.format(data));
+
+            webuser.setCode(cardNnumer);
 
             webUserService.addWebUser(webuser);
         }
@@ -70,14 +80,12 @@ public class WebUserController {
     }
 
 
-
     //批量删除
     @RequestMapping("deleteWebUserAll")
     @ResponseBody
-    public  void  deleteCatalogAll(String id){
+    public void deleteCatalogAll(String id) {
         webUserService.deleteAll(id);
     }
-
 
 
     //查询未审核用户表
@@ -122,5 +130,30 @@ public class WebUserController {
         }
         return "验证码发送成功";
     }
+//查询套餐
 
+    @RequestMapping("querymeal")
+    @ResponseBody
+    public List<Meal> querymeal(Integer id) {
+        return webUserService.querymeal(id);
+
+    }
+
+
+    //购买会员  修改信息
+
+    @RequestMapping("updateMember")
+    @ResponseBody
+    public boolean updateMember() {
+        try {
+            webUserService.updateMember();
+            return true;
+        } catch (Exception e) {
+
+            System.out.println(e);
+            return false;
+        }
+
+
+    }
 }

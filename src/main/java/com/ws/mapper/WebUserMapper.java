@@ -1,5 +1,6 @@
 package com.ws.mapper;
 
+import com.ws.bean.Meal;
 import com.ws.bean.WebUser;
 import org.apache.ibatis.annotations.*;
 
@@ -29,7 +30,7 @@ public interface WebUserMapper {
     @Update("UPDATE s_webuser c SET c.name=#{name} ,c.pwd=#{pwd} ,c.email=#{email}, c.sex=#{sex},c.ttid=1,c.phone=#{phone} where c.id=#{id}")
     void updateWebUser(WebUser webuser);
     //新增
-    @Insert("INSERT INTO s_webuser(name,pwd,email,sex,member,expiredate,ttid,phone)VALUES(#{name},#{pwd},#{email},#{sex},#{member},#{expiredate},0,#{phone})")
+    @Insert("INSERT INTO s_webuser(name,pwd,email,sex,expiredate,ttid,phone,code)VALUES(#{name},#{pwd},#{email},#{sex},#{expiredate},0,#{phone},#{code})")
     void addWebUser(WebUser webuser);
     //删除
     @Delete("delete from s_webuser where id=#{s}")
@@ -46,4 +47,15 @@ public interface WebUserMapper {
     //查看审核状态
     @Select("SELECT * FROM s_webuser where id=#{id} ")
     WebUser queryWebUserTtid(Integer id);
+
+
+
+    //查询套餐
+    @Select("select *  from t_meal")
+    List<Meal> querymeal(Integer id);
+
+    //修改会员信息
+ //   @Update("UPDATE s_webuser w set w.ttid=1 WHERE w.id =#{id}")
+    void updateMember();
+
 }
