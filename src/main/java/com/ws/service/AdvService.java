@@ -5,12 +5,15 @@ import com.ws.bean.WebUser;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 public interface AdvService {
 
 
 
     HashMap<String, Object> queryAdv(int page, int rows, Advertisement adv);
+
+    List<Advertisement> queryAdvList2();
 
     void deleteAll(String id);
 

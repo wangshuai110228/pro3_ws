@@ -141,5 +141,11 @@ public class pageController {
         return "weiTask";
     }
 
+    @RequestMapping("meal")
+    public  String  meal(){
+
+        return "meal";
+    }
+
 
 }

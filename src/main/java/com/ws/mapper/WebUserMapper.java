@@ -58,4 +58,8 @@ public interface WebUserMapper {
  //   @Update("UPDATE s_webuser w set w.ttid=1 WHERE w.id =#{id}")
     void updateMember();
 
+    //新增
+    @Insert("INSERT INTO t_meal(name,mouth,money,img)VALUES(#{name},#{mouth},#{money},#{img})")
+    void  addMeal(Meal  meal);
+
 }

@@ -37,6 +37,10 @@ public class AdvServiceImpl implements AdvService {
         return hashMap;
     }
 
+    @Override
+    public List<Advertisement> queryAdvList2() {
+        return advMapper.queryAdvList2();
+    }
 
 
     //删除

@@ -107,4 +107,9 @@ public class WebUserServiceImpl implements WebUserService {
         webUserMapper.updateMember();
 
     }
+
+    @Override
+    public void addMeal(Meal meal) {
+        webUserMapper.addMeal(meal);
+    }
 }

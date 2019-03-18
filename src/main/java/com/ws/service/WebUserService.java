@@ -30,4 +30,6 @@ public interface WebUserService {
     List<Meal> querymeal(Integer id);
 
     void updateMember();
+
+      void    addMeal(Meal  meal);
 }

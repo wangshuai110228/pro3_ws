@@ -156,4 +156,15 @@ public class WebUserController {
 
 
     }
+
+
+
+    //修改 ： 新增
+    @RequestMapping("addMeal")
+    @ResponseBody
+    public void addMeal(Meal  meal) {
+        webUserService.addMeal(meal);
+
+    }
+
 }
