@@ -135,7 +135,7 @@
             {field:'uname',title:'执行任务人',width:100,align:'center'},
             {field:'neirong',title:'任务内容',width:100,align:'center'},
             {field:'rdate',title:'发起任务时间',width:100,align:'center'},
-            {field:'rtype',title:'性别',width:100,align:'center',formatter:function(value,row,index){
+            {field:'rtype',title:'状态',width:100,align:'center',formatter:function(value,row,index){
                     if(value==1){
                         return "完成";
                     }else{

@@ -333,15 +333,7 @@
             {field:'lls',title:'浏览数',width:100,align:'center'},
             {field:'lteacher',title:'教师名字',width:100,align:'center'},
             {field:'oktime',title:'有效时间',width:100,align:'center'},
-            {field:'type',title:'类别',width:100,align:'center',formatter:function(value,row,index){
-
-                    if(value=1){
-                        return "免费"
-                    }else if(value=2){
-                        return "vip"
-                    }
-
-                }},
+            {field:'ktype',title:'类别',width:100,align:'center'},
             {field:'kdesc',title:'课程介绍',width:100,align:'center'},
             {field:'kurl',title:'封面',width:100,align:'center',formatter:function(value,row,index){
                     return "<img width='50px' height='50px' src='"+value+"'>";

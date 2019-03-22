@@ -1,15 +1,16 @@
 package com.ws.bean;
 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.io.Serializable;
+import java.util.Date;
 
-
-public class Kecheng implements Serializable {
-
-    private static final long serialVersionUID = -2974925595632283124L;
-    private  Integer id;
+@Data
+@ToString
+@NoArgsConstructor
+public class EsModel{
+    private String id;
     private  String kname;
     private  Integer kss;
     private  Integer lls;
@@ -19,21 +20,11 @@ public class Kecheng implements Serializable {
     private  String kdesc;
     private  String kurl;
 
-private String type;
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

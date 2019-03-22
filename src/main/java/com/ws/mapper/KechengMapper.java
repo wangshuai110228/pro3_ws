@@ -11,7 +11,7 @@ public interface KechengMapper {
 
     //查询总条数
    @Select("select count(*)  from t_kecheng")
-    /*@Select("<script>"
+   /* @Select("<script>"
             + "select count(*)  from t_kecheng "
             + "WHERE 1=1"
             + "<if test='kecheng.kname!=null'>"
@@ -24,7 +24,7 @@ public interface KechengMapper {
 
     //查询
   @Select("SELECT * FROM t_kecheng LIMIT #{start},#{rows}")
-      /* @Select("<script>"
+   /*    @Select("<script>"
             + "select *  from t_kecheng"
             + "WHERE 1=1"
             + "<if test='kecheng.kname!=null'>"
@@ -49,17 +49,10 @@ public interface KechengMapper {
     Kecheng queryKechengById(Integer id);
 
     //查询课程不分页
-    //@Select("SELECT * FROM t_kecheng k WHERE k.ttid=1")
-        @Select("<script>"
-            + "select * from t_kecheng  "
-            + "WHERE ttid=1"
-            + "<if test='kname!=null'>"
-            + "and kname like '%${kname}%'"
-            + "</if>"
-            + "</script>")
+    @Select("SELECT * FROM t_kecheng k WHERE k.ttid=1")
     List<Kecheng> querykechen3();
 
-    //查询没有审核的 t
+    //查询没有审核的
     @Select("SELECT * FROM t_kecheng k WHERE k.ttid=0")
     List<Kecheng> querykechenId();
 

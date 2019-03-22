@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class AdvController {
@@ -31,7 +32,13 @@ public class AdvController {
 
         return list;
     }
+  //普通查询
+    @RequestMapping("queryAdvList2")
+    @ResponseBody
+    public List<Advertisement> queryAdvList2(){
 
+        return advService.queryAdvList2();
+    }
 
 
     //批量删除
