@@ -1,10 +1,13 @@
 package com.ws.service.impl;
 
 import com.ws.bean.Kecheng;
+import com.ws.bean.Ketype;
 import com.ws.mapper.KechengMapper;
 import com.ws.service.KechengService;
+import com.ws.utils.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +18,8 @@ public class KechengServiceImpl implements KechengService {
     @Autowired
     private KechengMapper kechengMapper;
 
+    @Autowired
+    private OSSClientUtil ossClient;
 
     @Override
     public HashMap<String, Object> querykechen(int page, int rows, Kecheng kecheng) {
@@ -61,8 +66,10 @@ public class KechengServiceImpl implements KechengService {
 
     //不分页
     @Override
-    public List<Kecheng> querykechen3() {
-        return kechengMapper.querykechen3();
+    public List<Kecheng> querykechen3(String ty,String type,String kname,String lteacher) {
+
+        return kechengMapper.querykechen3(ty,type,kname,lteacher);
+
     }
 
     //查询没有审核的
@@ -76,4 +83,43 @@ public class KechengServiceImpl implements KechengService {
     public void updatekechenId(Integer id) {
         kechengMapper.updatekechenId(id);
     }
+
+    //上传图片
+    @Override
+    public String updateHead(MultipartFile file, int i) {
+        if (file == null || file.getSize() <= 0) {
+            System.out.println("头像不能为空");
+        }
+        String name = ossClient.uploadImg2Oss(file);
+
+        String imgUrl = ossClient.getImgUrl(name);
+
+        return imgUrl;
+    }
+
+
+    //课程类型查询
+    @Override
+    public List<Ketype> QuerykeType() {
+        return kechengMapper.QuerykeType();
+    }
+
+    //新增课程类型
+    @Override
+    public void addkeType(Ketype ketype) {
+        kechengMapper.addkeType(ketype);
+    }
+
+    @Override
+    public List<Kecheng> querykechen4() {
+
+        return kechengMapper.querykechen4();
+    }
+
+    @Override
+    public List<Kecheng> querykechen6(int page,int rows) {
+        return kechengMapper.querykechen6(page,rows);
+    }
+
+
 }

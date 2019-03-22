@@ -75,15 +75,9 @@
 		<!-- 文件域 上传图片 -->
 		<div id="eimg"></div>
 	<!-- 隐藏域 上传图片的路径 -->
-		<input  name="userimg"  id="create_user">
+		<input  type="hidden" name="userimg"  id="create_user">
 		<%--&lt;%&ndash;&lt;%&ndash;显示进度条&ndash;%&gt;&ndash;%&gt;--%>
 		<div id="uploadfileQueue"></div>
-
-
-
-			<%--<div  id="preview_box"></div>--%>
-		<%--<input id="img_input" type="file" accept="image/*" />--%>
-
 
 	</td>
   </tr>
@@ -196,13 +190,13 @@ $("#myTable").datagrid({
                 return "女";
             }
         }},
-		{field:'phone',title:'手机号码',width:100},
+		{field:'phone',title:'手机号码',width:80},
         {field:'dname',title:'部门',width:80},
         {field:"rname",title:"角色",width:100},
         {field:'username',title:'账号'},
         {field:'userpwd',title:'密码'},
 
-		{field:'registration_date',title:'开号时间',width:100},
+		{field:'registration_date',title:'开号时间',width:80},
         {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
             var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
             str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"
@@ -372,9 +366,6 @@ function deleteBys(){
 	}
 
 
-
-
-
 ////初始化uploadify
 
 	$("#eimg").uploadify({
@@ -440,48 +431,6 @@ function deleteBys(){
 			//alert(queueData.uploadsSuccessful);
 		}
 	});
-
-
-
-
-
-
-
-$("#img_input").on("change", function(e) {
-	var file = e.target.files[0]; // 获取图片资源
-	var fd = new FormData(); // 用formdata上传文件
-
-	// 只选择图片文件
-	if (!file.type.match('image.*')) {
-		return false;
-	}
-
-	fd.append('file', file, file.name); // 填入文件
-
-	$.ajax({
-		url: 'headImgUpload.json',
-		data: fd,
-		processData: false,
-		contentType: false,
-		type: 'POST',
-		success: function () {
-			// 成功后显示文件预览
-			var reader = new FileReader();
-			reader.readAsDataURL(file); // 读取文件
-			// 渲染文件
-			reader.onload = function(ev) {
-				var img = '<img class="preview" src="' + ev.target.result + '" alt="preview"/>';
-
-				$("#preview_box").empty().append(img);
-			}
-		}
-	});
-});
-
-
-
-
-
 
 </script>
 </html>

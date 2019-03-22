@@ -6,6 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class pageController {
 
+
+    @RequestMapping("keType")
+    public  String  keType(){
+
+        return "keType";
+    }
+
+
+    @RequestMapping("test")
+    public  String  test(){
+
+        return "ossdome";
+    }
+
+
+
     @RequestMapping("log")
     public  String  log(){
 
@@ -139,6 +155,12 @@ public class pageController {
     public  String  weiTask(){
 
         return "weiTask";
+    }
+
+    @RequestMapping("meal")
+    public  String  meal(){
+
+        return "meal";
     }
 
 

@@ -37,6 +37,8 @@ public interface AdvMapper {
 
 
 
+
+
     //删除
     @Delete("delete from t_advertisement where id=#{s}")
     void deleteAll(String s);
@@ -54,4 +56,6 @@ public interface AdvMapper {
     void addAdv(Advertisement adv);
 
 
+    @Select("select * from  t_advertisement")
+    List<Advertisement> queryAdvList2();
 }

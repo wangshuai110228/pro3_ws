@@ -29,6 +29,9 @@ public class CatalogController {
         return list;
     }
 
+    //查询课程目录
+
+
     //查询新增对应课程
     @RequestMapping("queryRoleKecheng")
     @ResponseBody

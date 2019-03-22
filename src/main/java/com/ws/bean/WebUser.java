@@ -22,8 +22,15 @@ public class WebUser implements Serializable {
     private  Integer   ttid;
     private   String  phone;
 
+    private String code;
 
+    public String getCode() {
+        return code;
+    }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public Integer getId() {
         return id;

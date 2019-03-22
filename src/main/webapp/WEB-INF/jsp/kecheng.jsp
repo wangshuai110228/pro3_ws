@@ -52,14 +52,13 @@
             <tr>
                 <td>头像</td>
                 <td>
-                    <!-- 显示图片 -->
-                    <img width="100px" height="100px"  id="mypic">
+                    <%--<!-- 显示图片 -->--%>
+                    <img width="100px" height="100px" src="" id="mypic">
                     <!-- 文件域 上传图片 -->
                     <div id="eimg"></div>
                     <!-- 隐藏域 上传图片的路径 -->
-                    <input type="hidden" name="kurl"  id="create_user">
-
-                    <%--显示进度条--%>
+                    <input  type="hidden" name="kurl"  id="create_user">
+                    <%--&lt;%&ndash;&lt;%&ndash;显示进度条&ndash;%&gt;&ndash;%&gt;--%>
                     <div id="uploadfileQueue"></div>
                 </td>
             </tr>
@@ -89,8 +88,8 @@
             <tr>
                 <td>类别</td>
                 <td>
-                    <input type="radio" value="1" name="ktype">免费
-                    <input type="radio" value="0" name="ktype">vip
+                    <input type="radio" value="免费" name="ktype">免费
+                    <input type="radio" value="vip" name="ktype">vip
                 </td>
             </tr>
             <tr>
@@ -196,7 +195,8 @@
 
     }
 
-    ///初始化uploadify
+
+    ////初始化uploadify
 
     $("#eimg").uploadify({
         //开启调试
@@ -213,7 +213,8 @@
         //文件选择后的容器ID
         'queueID': 'uploadfileQueue',
         //后台运行上传的程序
-        'uploader': '<%=request.getContextPath()%>/uploadImg2',
+
+        'uploader': '<%=request.getContextPath()%>/headImgUpload1.json',
         'width': '100',
         'height': '24',
         //是否支持多文件上传，这里为true，你在选择文件的时候，就可以选择多个文件
@@ -242,45 +243,24 @@
         },
         //检测FLASH失败调用
         'onFallback': function () {
-            //alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
+            alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
         },
         //上传到服务器，服务器返回相应信息到data里
         'onUploadSuccess': function (file, data, response) {
+
             //alert(data);
-            $("#mypic").attr("src", "<%=request.getContextPath()%>/"+data);
+            var  d =$("#mypic").attr("src", data);
+
+            //alert(data);
             $("#create_user").val(data);
         },
+
+
         //多文件上传，服务器返回相应的信息
         'onQueueComplete': function (queueData) {
             //alert(queueData.uploadsSuccessful);
         }
     });
-
-
-    //单个删除
-    function deleteByid(id){
-
-        //alert(id)
-        $.messager.confirm("提示","是否确定删除!",function(r){
-            if(r){
-                $.ajax({
-                    url:"<%=request.getContextPath() %>/deleteKechenAll",
-                    type:"post",
-                    data:{"id":id},
-                    success:function(){
-                        $.messager.alert("提示消息","删除成功","info");
-                        search();
-                    },error:function(){
-                        $.messager.alert("提示消息","删除失败","error");
-
-
-                    }
-                })
-
-            }
-
-        })
-    }
 
 
     //批量删除
@@ -327,7 +307,7 @@
 
     //查询
     $("#myTablek").datagrid({
-        url:"<%=request.getContextPath()%>/querykecheneeee",
+        url:"<%=request.getContextPath()%>/querykechen2",
         columns:[[
             {field:'check',checkbox:true},
             {field:'id',title:'编号',width:100,align:'center'},
@@ -336,15 +316,7 @@
             {field:'lls',title:'浏览数',width:100,align:'center'},
             {field:'lteacher',title:'教师名字',width:100,align:'center'},
             {field:'oktime',title:'有效时间',width:100,align:'center'},
-            {field:'type',title:'类别',width:100,align:'center',formatter:function(value,row,index){
-
-                    if(value=1){
-                        return "免费"
-                    }else if(value=2){
-                        return "vip"
-                    }
-
-                }},
+            {field:'ktype',title:'类别',width:100,align:'center'},
             {field:'kdesc',title:'课程介绍',width:100,align:'center'},
             {field:'kurl',title:'封面',width:100,align:'center',formatter:function(value,row,index){
                     return "<img width='50px' height='50px' src='"+value+"'>";
@@ -358,7 +330,7 @@
         ]],
         pagination:true,//开启分页
         pageList:[1,2,3,4,5,6], //初始化页面大小选择列表
-       pageSize:3 , //初始化每页显示条数，默认是10
+       pageSize:5 , //初始化每页显示条数，默认是10
         pageNumber:1, //当前页,默认是1
         fit:true,
         toolbar:"#searchDivk",

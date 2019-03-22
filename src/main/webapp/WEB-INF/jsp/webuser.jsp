@@ -71,17 +71,29 @@
                     <input type="radio" value="0" name="sex">女
                 </td>
             </tr>
-            <tr>
-                <td>是否注册会员</td>
-                <td>
-                    <input type="radio" value="1" name="member">是
-                    <input type="radio" value="0" name="member">否
-                </td>
-            </tr>
+
+
         </table>
 
     </form>
 
+</div>
+
+<!-- 医生表格 -->
+<div id="yueDialog" class="easyui-dialog" data-options="title:'购买',modal:true,closed:true,
+		buttons:[{
+				text:'购买',
+				plain:true,
+				handler:function(){
+
+
+                    fukuan();
+					updateStatus();  <!--修改状态的方法名  -->
+				}
+			}]"
+     style="width: 600px;height: 300px;">
+
+    <table id="myTable1"></table>
 </div>
 
 <!-- 定义按钮 -->
@@ -266,10 +278,12 @@
                     }
                 }},
             {field:'expiredate',title:'注册时间'},
+            {field:'code',title:'注册时间'},
 
             {field:'tools',title:'操作', width:100,align:'center',formatter:function(value,row,index){
                     var str = "<a href='javascript:openUpdateBy("+row.id+")'>修改</a>"
                     str+="| <a href='javascript:deleteByid("+row.id+")'>删除</a>"
+                    str+="| <a href='javascript:setmeal("+row.id+")'>注册会员</a>"
                     return str;
                 }}
 
@@ -283,5 +297,70 @@
         pagePosition:"top"
     })
 
+
+    //注册会员表
+    function setmeal(id){
+
+        openDoc();
+        $("#myTable1").datagrid({
+            url:"${ctx}/querymeal",
+            fit:true,
+            columns:[[
+                {field:'id',title:'编号'},
+                {field:'name',title:'套餐'},
+                {field:'mouth',title:'月份/月'},
+                {field:'money',title:'价钱/元'},
+                {field:'status',title:'状态',formatter:function(value,row,index){
+                        if (value==1) {
+                            return '可购买';
+                        }else{
+                            return '停止购买';
+                        }
+                    }},
+            ]]
+        })
+
+    }
+
+    //预约弹框
+    function openDoc(){
+        $("#yueDialog").dialog({
+            title:'购买',
+            closed:false,
+        })
+    }
+  //修改会员状态  以及 时间
+    function updateStatus(){
+        var arr = $('#myTable1').datagrid('getChecked');
+
+        if(arr.length == 0){
+            $.messager.alert('提示','请选择需要购买的套餐','info');
+            return;
+        }
+
+
+        $.messager.confirm('提示', '是否确定购买？', function(r){
+            if (r){
+                var ids = ""
+                for (var i = 0; i < arr.length; i++) {
+                    ids += ids == "" ? arr[i].doctorid : ","+arr[i].doctorid
+                }
+                $.ajax({
+                    url:'${ctx}/updateMember',
+                    type:'post',
+
+                    dataType:'json',
+                    success:function(data){
+                        window.parent.location.href="<%=request.getContextPath()%>/webuser"
+                    }
+                })
+            }
+        });
+    }
+
+    function fukaun(){
+        var price= $("#price").val()
+        location.href="/pay?money="+"50"
+    }
 </script>
 </html>
