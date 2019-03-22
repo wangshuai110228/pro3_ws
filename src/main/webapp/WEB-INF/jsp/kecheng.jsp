@@ -29,13 +29,10 @@
 <body>
 
 <div id="searchDivk">
-<!---->
-   <%-- 课程名称：<input class="easyui-textbox" id="kname">
-
+<!----><%--课程名称：<input class="easyui-textbox" id="kname">
     <a href="javascript:search()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
---%>
-
-    <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
+   --%>
+     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
 
 </div>
@@ -120,7 +117,7 @@
     //条件查询
     function search(){
         $("#myTablek").datagrid("load",{
-           /* kname:$("#kname").textbox("getValue")*/
+            //kname:$("#kname").textbox("getValue")
         })
 
     }
@@ -162,11 +159,14 @@
 
 
                 //数据回显
+                //数据回显
                 $("#myForm").form("load",data);
                 //回显：图片
+                //回显:图片
                 $("#mypic").prop("src",data.kurl)
 
 
+                //弹框
                 //弹框
                 $("#myDialog").dialog({
                     title:"修改用户",

@@ -547,5 +547,85 @@ data-options="region:'west',width:200,title:'功能导航',split:true,iconCls:'i
 		}
 
 	})
+    //加载同步树：工具js    章节
+
+    $("#asynTree10").tree({
+        url:"<%=request.getContextPath() %>/zhangTree",
+        parentField:"pid",
+        onClick:function(node){
+            //alert(node.url)
+            if(node.url!=null){
+                if($("#myTabs").tabs("exists",node.text)){
+
+                    $("#myTabs").tabs("select",node.text);
+                }else{
+
+                    $("#myTabs").tabs("add",{
+                        title:node.text,
+                        closable:true,
+                        content:createJsp(node.url),
+
+                        //更新页面
+                        tools:[{
+                            iconCls:'icon-mini-refresh',
+                            handler:function(){
+                                // 更新选项卡
+                                var tab = $('#myTabs').tabs('getSelected');
+                                $("#myTabs").tabs('update',{
+                                    tab: tab,
+                                    options:{
+                                        content: createJsp(node.url)
+                                    }
+                                });
+                            }
+                        }]
+
+                    })
+                }
+
+            }
+        }
+
+    })
+    //加载同步树：工具js    小节视频
+
+    $("#asynTree11").tree({
+        url:"<%=request.getContextPath() %>/shipinTree",
+        parentField:"pid",
+        onClick:function(node){
+            //alert(node.url)
+            if(node.url!=null){
+                if($("#myTabs").tabs("exists",node.text)){
+
+                    $("#myTabs").tabs("select",node.text);
+                }else{
+
+                    $("#myTabs").tabs("add",{
+                        title:node.text,
+                        closable:true,
+                        content:createJsp(node.url),
+
+                        //更新页面
+                        tools:[{
+                            iconCls:'icon-mini-refresh',
+                            handler:function(){
+                                // 更新选项卡
+                                var tab = $('#myTabs').tabs('getSelected');
+                                $("#myTabs").tabs('update',{
+                                    tab: tab,
+                                    options:{
+                                        content: createJsp(node.url)
+                                    }
+                                });
+                            }
+                        }]
+
+                    })
+                }
+
+            }
+        }
+
+    })
 </script>
 </html>

@@ -238,7 +238,7 @@
     //条件查询
     function searchUSer(){
         $("#myTable").datagrid("load",{
-            //name:$("#name").textbox("getValue")
+            name:$("#name").textbox("getValue")
         })
     }
 

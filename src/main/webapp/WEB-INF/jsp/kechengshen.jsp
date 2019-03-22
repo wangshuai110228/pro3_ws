@@ -34,7 +34,6 @@
 
     <a href="javascript:search()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
 --%>
-
     <a href="javascript:deleteBys()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">批量删除</a>
     <a href="javascript:openDig()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增</a>
 
@@ -120,7 +119,7 @@
     //条件查询
     function search(){
         $("#myTablek").datagrid("load",{
-            kname:$("#kname").textbox("getValue")
+           // kname:$("#kname").textbox("getValue")
         })
 
     }

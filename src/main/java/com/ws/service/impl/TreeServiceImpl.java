@@ -69,8 +69,6 @@ public class TreeServiceImpl  implements TreeService {
     public List<Tree> queryTree10(Integer uid,Tree tree) {return treeMapper.queryTree10(uid,tree); }
 
 
-
-
     //登陆
     @Override
     public UserBean queryUserByLoginNumber(String username) {
