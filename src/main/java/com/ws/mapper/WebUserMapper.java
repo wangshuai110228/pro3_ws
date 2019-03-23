@@ -77,4 +77,6 @@ public interface WebUserMapper {
     @Insert("INSERT INTO t_meal(name,mouth,money,img)VALUES(#{name},#{mouth},#{money},#{img})")
     void  addMeal(Meal  meal);
 
+    @Select("SELECT * FROM s_webuser w where w.name=#{name}")
+    WebUser queryWebBeanNumber(String name);
 }

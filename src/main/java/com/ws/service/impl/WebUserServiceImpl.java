@@ -112,4 +112,11 @@ public class WebUserServiceImpl implements WebUserService {
     public void addMeal(Meal meal) {
         webUserMapper.addMeal(meal);
     }
+
+
+    //插叙网站用户密码
+    @Override
+    public WebUser queryWebBeanNumber(String name) {
+        return webUserMapper.queryWebBeanNumber(name);
+    }
 }

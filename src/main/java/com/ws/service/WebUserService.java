@@ -32,4 +32,7 @@ public interface WebUserService {
     void updateMember();
 
       void    addMeal(Meal  meal);
+
+    WebUser queryWebBeanNumber(String name);
+
 }
