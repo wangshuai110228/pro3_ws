@@ -220,7 +220,7 @@
         //是否支持多文件上传，这里为true，你在选择文件的时候，就可以选择多个文件
         'multi': true,
         'fileTypeDesc': '支持的格式：',
-        'fileTypeExts': '*.jpg;*.jpge;*.gif;*.png',
+        'fileTypeExts': '*.jpg;*.jpge;*.gif;*.png;*.mp4',
         'fileSizeLimit': '1MB',
         //上传完成后多久删除进度条
         'removeTimeout': 1,
